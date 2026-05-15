@@ -699,6 +699,34 @@ body {
 /* ══════════════════════════════════
    CALENDAR TAB
 ══════════════════════════════════ */
+/* ── FIRST VISIT OVERLAY ── */
+.fv-overlay {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 300;
+  display: flex; align-items: center; justify-content: center;
+}
+.fv-overlay.hidden { display: none; }
+.fv-modal {
+  background: #1e2225;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 14px;
+  padding: 32px 36px;
+  max-width: 420px;
+  width: calc(100% - 48px);
+  text-align: center;
+}
+.fv-icon { font-size: 40px; margin-bottom: 14px; }
+.fv-title { font-size: 20px; font-weight: 700; color: white; margin-bottom: 10px; }
+.fv-body { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 24px; }
+.fv-btn {
+  background: var(--bts-magenta); color: white; border: none;
+  font-size: 14px; font-weight: 600; padding: 12px 28px;
+  border-radius: 8px; cursor: pointer; transition: background 0.2s;
+  width: 100%;
+}
+.fv-btn:hover { background: #a8155a; }
+
 .cal-wrap { max-width: 900px; margin: 0 auto; padding: 36px 36px 80px; }
 .cal-intro { margin-bottom: 28px; }
 .cal-intro h1 { font-size: 24px; font-weight: 700; color: white; margin-bottom: 6px; }
@@ -1247,6 +1275,26 @@ body {
   <button class="notice-close" onclick="closeNotice()">✕</button>
 </div>
 
+<!-- JOURNEY FIRST VISIT OVERLAY -->
+<div class="fv-overlay hidden" id="fv-journey">
+  <div class="fv-modal">
+    <div class="fv-icon">🗺</div>
+    <div class="fv-title">This map is interactive</div>
+    <div class="fv-body">Click any workshop card to see its purpose, what you'll walk away with, and how your survey responses shaped its design.</div>
+    <button class="fv-btn" onclick="dismissOverlay('fv-journey')">Got it — let me explore</button>
+  </div>
+</div>
+
+<!-- CALENDAR FIRST VISIT OVERLAY -->
+<div class="fv-overlay hidden" id="fv-calendar">
+  <div class="fv-modal">
+    <div class="fv-icon">📅</div>
+    <div class="fv-title">This calendar is interactive</div>
+    <div class="fv-body">Click any session on the calendar to see its full description, purpose, and how your survey shaped its design.</div>
+    <button class="fv-btn" onclick="dismissOverlay('fv-calendar')">Got it — let me explore</button>
+  </div>
+</div>
+
 <!-- DETAIL PANEL -->
 <div class="detail-panel" id="detail-panel">
   <div class="panel-header">
@@ -1290,7 +1338,7 @@ body {
     </div>
 
     <div style="margin-top:16px;padding:14px 18px;background:rgba(255,255,255,0.04);border-radius:8px;border-left:3px solid rgba(255,255,255,0.15);">
-      <p style="font-size:13px;color:rgba(255,255,255,0.6);margin:0;line-height:1.6;">Missing an invitation to a session? Email <a href="mailto:learning.enablement@bts.com" style="color:var(--bts-magenta-mid);text-decoration:none;font-weight:600;">learning.enablement@bts.com</a> to have the invitation resent.</p>
+      <p style="font-size:13px;color:rgba(255,255,255,0.6);margin:0;line-height:1.6;">Missing an invitation to a session? Email <a href="mailto:enablement.learning@bts.com" style="color:var(--bts-magenta-mid);text-decoration:none;font-weight:600;">enablement.learning@bts.com</a> to have the invitation resent.</p>
     </div>
   </div>
   <div class="copyright">Copyright © 2026 BTS</div>
@@ -1311,19 +1359,20 @@ const calMonths = [
         { d: 5 },
       ]},
       { label: 'Jun 8–12',  days: [
-        { d: 8 }, { d: 9 }, { d: 10 }, { d: 11 },
-        { d: 12, events: [{ name: 'Lab · Engaging in AI Conversations', time: '9–9:30am PT · 12–12:30pm ET', color: 'ce-lab-ai-tg', session: 'ai-conv' }] },
+        { d: 8 }, { d: 9 }, { d: 10 },
+        { d: 11, events: [{ name: 'Lab · Engaging in AI Conversations', time: '9–9:30am PT · 12–12:30pm ET', color: 'ce-lab-ai-tg', session: 'ai-conv' }] },
+        { d: 12 },
       ]},
       { label: 'Jun 15–19', days: [
         { d: 15 },
         { d: 16, events: [{ name: 'AI Essentials + Know Your Tools', time: '11am–12pm PT · 2–3pm ET', color: 'ce-ai', session: 'ai-essentials' }] },
-        { d: 17 }, { d: 18 },
+        { d: 17, events: [{ name: 'Lab · AI Essentials + Know Your Tools', time: '9–9:30am PT · 12–12:30pm ET', color: 'ce-lab-ai', session: 'ai-essentials' }] },
+        { d: 18 },
         { d: 19, hol: 'Juneteenth (USA)' },
       ]},
       { label: 'Jun 22–26', days: [
-        { d: 22 }, { d: 23 }, { d: 24 },
-        { d: 25, events: [{ name: 'ART Office Hours', time: '11am–12pm PT · 2–3pm ET', color: 'ce-oh', session: 'office-hours' }] },
-        { d: 26, events: [{ name: 'Lab · AI Essentials + Know Your Tools', time: '9–9:30am PT · 12–12:30pm ET', color: 'ce-lab-ai', session: 'ai-essentials' }] },
+        { d: 22 }, { d: 23, events: [{ name: 'ART Office Hours', time: '11am–12pm PT · 2–3pm ET', color: 'ce-oh', session: 'office-hours' }] },
+        { d: 24 }, { d: 25 }, { d: 26 },
       ]},
       { label: 'Jun 29–30', days: [
         { d: 29 }, { d: 30 },
@@ -1344,18 +1393,21 @@ const calMonths = [
         { d: 10 },
       ]},
       { label: 'Jul 13–17', days: [
-        { d: 13 }, { d: 14 }, { d: 15 }, { d: 16 },
-        { d: 17, events: [{ name: 'Lab · Map & Simplify a Workflow', time: '9–9:30am PT · 12–12:30pm ET', color: 'ce-lab-rs', session: 'map-workflow' }] },
+        { d: 13 }, { d: 14 }, { d: 15 },
+        { d: 16, events: [{ name: 'Lab · Map & Simplify a Workflow', time: '9–9:30am PT · 12–12:30pm ET', color: 'ce-lab-rs', session: 'map-workflow' }] },
+        { d: 17 },
       ]},
       { label: 'Jul 20–24', days: [
         { d: 20 },
-        { d: 21, events: [{ name: 'Navigating Change', time: '11am–12pm PT · 2–3pm ET', color: 'ce-tg', session: 'nav-change' }] },
-        { d: 22 }, { d: 23 },
-        { d: 24, events: [{ name: 'Lab · Navigating Change', time: '9–9:30am PT · 12–12:30pm ET', color: 'ce-lab-tg', session: 'nav-change' }] },
+        { d: 21 }, { d: 22 },
+        { d: 23, events: [{ name: 'ART Office Hours', time: '11am–12pm PT · 2–3pm ET', color: 'ce-oh', session: 'office-hours' }] },
+        { d: 24 },
       ]},
       { label: 'Jul 27–31', days: [
-        { d: 27 }, { d: 28 }, { d: 29 },
-        { d: 30, events: [{ name: 'ART Office Hours', time: '11am–12pm PT · 2–3pm ET', color: 'ce-oh', session: 'office-hours' }] },
+        { d: 27 },
+        { d: 28, events: [{ name: 'Navigating Change', time: '11am–12pm PT · 2–3pm ET', color: 'ce-tg', session: 'nav-change' }] },
+        { d: 29 },
+        { d: 30, events: [{ name: 'Lab · Navigating Change', time: '9–9:30am PT · 12–12:30pm ET', color: 'ce-lab-tg', session: 'nav-change' }] },
         { d: 31 },
       ]},
     ],
@@ -1370,14 +1422,16 @@ const calMonths = [
         { d: 7 },
       ]},
       { label: 'Aug 10–14', days: [
-        { d: 10 }, { d: 11 }, { d: 12 }, { d: 13 },
-        { d: 14, events: [{ name: 'Lab · Reviewing AI Outputs', time: '9–9:30am PT · 12–12:30pm ET', color: 'ce-lab-ai', session: 'review-ai' }] },
+        { d: 10 }, { d: 11 }, { d: 12 },
+        { d: 13, events: [{ name: 'Lab · Reviewing AI Outputs', time: '9–9:30am PT · 12–12:30pm ET', color: 'ce-lab-ai', session: 'review-ai' }] },
+        { d: 14 },
       ]},
       { label: 'Aug 17–21', days: [
         { d: 17 },
         { d: 18, events: [{ name: 'Leadership Style', time: '11am–12pm PT · 2–3pm ET', color: 'ce-tg', session: 'leadership' }] },
-        { d: 19 }, { d: 20 },
-        { d: 21, events: [{ name: 'Lab · Leadership Style', time: '9–9:30am PT · 12–12:30pm ET', color: 'ce-lab-tg', session: 'leadership' }] },
+        { d: 19 },
+        { d: 20, events: [{ name: 'Lab · Leadership Style', time: '9–9:30am PT · 12–12:30pm ET', color: 'ce-lab-tg', session: 'leadership' }] },
+        { d: 21 },
       ]},
       { label: 'Aug 24–28', days: [
         { d: 24 }, { d: 25 }, { d: 26 },
@@ -1559,6 +1613,8 @@ document.addEventListener('DOMContentLoaded', function() { renderCalendar(); });
 if (document.readyState !== 'loading') renderCalendar();
 
 // ── NAVIGATION ──
+const seenScreens = new Set();
+
 function showScreen(s) {
   document.querySelectorAll('.screen').forEach(el => el.classList.remove('active'));
   document.querySelectorAll('.nav-tab').forEach(el => el.classList.remove('active'));
@@ -1566,6 +1622,18 @@ function showScreen(s) {
   const idx = {journey:0, insights:1, personas:2, calendar:3}[s];
   document.querySelectorAll('.nav-tab')[idx].classList.add('active');
   clearHighlights();
+
+  // Show first-visit overlay for journey and calendar
+  if ((s === 'journey' || s === 'calendar') && !seenScreens.has(s)) {
+    seenScreens.add(s);
+    const overlay = document.getElementById('fv-' + s);
+    if (overlay) overlay.classList.remove('hidden');
+  }
+}
+
+function dismissOverlay(id) {
+  const overlay = document.getElementById(id);
+  if (overlay) overlay.classList.add('hidden');
 }
 
 // ── SESSION DATA ──
@@ -2158,6 +2226,10 @@ document.addEventListener('keydown', e => {
 });
 
 renderCalendar();
+
+// Show journey overlay on first page load
+seenScreens.add('journey');
+document.getElementById('fv-journey').classList.remove('hidden');
 </script>
 </body>
 </html>
