@@ -149,13 +149,59 @@ body {
 
 /* Workshops row */
 .workshops-row {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 6px;
   margin-left: 42px;
   margin-bottom: 5px;
 }
 .workshops-row.two-col { grid-template-columns: 1fr 1fr; }
 .workshops-row.one-col { grid-template-columns: 1fr; }
+
+/* New 2/3 + arrow + 1/3 workshop-lab row */
+.ws-lab-row {
+  display: grid;
+  grid-template-columns: 2fr auto 1fr;
+  gap: 0;
+  align-items: stretch;
+  margin-left: 42px;
+  margin-bottom: 6px;
+}
+.ws-lab-arrow {
+  display: flex; align-items: center; justify-content: center;
+  padding: 0 7px; flex-shrink: 0;
+}
+.ws-lab-arrow-icon {
+  width: 26px; height: 26px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700; flex-shrink: 0;
+}
+.lab-card {
+  border-radius: 9px;
+  padding: 11px 13px;
+  cursor: pointer;
+  transition: all 0.18s;
+  display: flex; flex-direction: column; justify-content: space-between;
+  opacity: 0.88;
+  position: relative; overflow: hidden;
+}
+.lab-card::after {
+  content: '';
+  position: absolute; top: 0; right: 0;
+  width: 20px; height: 20px;
+  border-radius: 0 9px 0 20px;
+  background: rgba(255,255,255,0.1);
+}
+.lab-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  filter: brightness(1.08);
+  opacity: 1;
+}
+.lab-badge { font-size: 8px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 4px; }
+.lab-name { font-size: 11px; font-weight: 700; color: white; line-height: 1.3; flex: 1; margin-bottom: 6px; }
+.lab-note { font-size: 9px; color: rgba(255,255,255,0.7); line-height: 1.4; border-top: 1px solid rgba(255,255,255,0.18); padding-top: 6px; }
+.ws-async-line { font-size: 10px; color: rgba(255,255,255,0.7); margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.15); }
 
 /* Workshop card */
 .ws-card {
@@ -211,7 +257,8 @@ body {
 /* Office hours bar */
 .oh-bar {
   margin-left: 42px;
-  margin-bottom: 0;
+  margin-top: 6px;
+  margin-bottom: 6px;
   background: #0db4ab;
   border-radius: 7px;
   padding: 8px 16px;
@@ -688,6 +735,8 @@ body {
 
 /* Dim/highlight on journey map */
 .ws-card.dim { opacity: 0.2; }
+.lab-card.dim { opacity: 0.2; }
+.oh-bar.dim { opacity: 0.2; }
 .ws-card.hl-persona { box-shadow: 0 0 0 2px var(--bts-blue-mid), 0 6px 20px rgba(28,76,135,0.4); filter: brightness(1.1); }
 .ws-card.hl-survey { box-shadow: 0 0 0 2px #0db4ab, 0 6px 20px rgba(13,180,171,0.3); filter: brightness(1.1); }
 /* Bucket highlight colors — gold, white, grey to contrast with all workshop colors */
@@ -795,8 +844,7 @@ body {
 <!-- HEADER -->
 <header class="site-header">
   <div class="bts-logo">
-    <div class="bts-discs"><div class="disc"></div><div class="disc sm"></div></div>
-    <div class="bts-name">BTS</div>
+    <img src="data:image/png;base64,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" alt="BTS" style="height:36px;width:auto;">
   </div>
   <div class="header-sub">Enablement Learning: ART Journey 2026</div>
 </header>
@@ -858,18 +906,36 @@ body {
         <div class="month-line"></div>
         <div class="month-tag">Month One · Understand</div>
       </div>
-      <div class="workshops-row two-col">
+      <div class="ws-lab-row">
         <div class="ws-card w-ai-tg" id="ws-ai-conv" onclick="openSession('ai-conv')">
-          <div class="ws-half">First half · #2</div>
+          <div class="ws-half">Workshop · #2 · Jun 4 · 60 min</div>
           <div class="ws-name">Engaging in AI Conversations</div>
-          <div class="ws-meta">60 min (followed by a 30 min lab session)</div>
-          <span class="ws-badge">AI Leadership + Talent Growth</span>
+          <div class="ws-meta">AI Leadership + Talent Growth</div>
+          <div class="ws-async-line">📹 Available async on Momenta — day after workshop</div>
         </div>
+        <div class="ws-lab-arrow">
+          <div class="ws-lab-arrow-icon" style="background:rgba(180,30,100,0.25);color:rgba(210,50,130,0.9)">→</div>
+        </div>
+        <div class="lab-card w-ai-tg" id="ws-lab-ai-conv" onclick="openSession('ai-conv')">
+          <div class="lab-badge">Lab · Jun 11 · 30 min</div>
+          <div class="lab-name">Engaging in AI Conversations Lab</div>
+          <div class="lab-note">Prior to attending, join live workshop or complete async version</div>
+        </div>
+      </div>
+      <div class="ws-lab-row">
         <div class="ws-card w-ai" id="ws-ai-essentials" onclick="openSession('ai-essentials')">
-          <div class="ws-half">Second half · #3</div>
+          <div class="ws-half">Workshop · #3 · Jun 16 · 60 min</div>
           <div class="ws-name">AI Essentials + Know Your Tools</div>
-          <div class="ws-meta">60 min (followed by a 30 min lab session)</div>
-          <span class="ws-badge">AI Leadership</span>
+          <div class="ws-meta">AI Leadership</div>
+          <div class="ws-async-line">📹 Available async on Momenta — day after workshop</div>
+        </div>
+        <div class="ws-lab-arrow">
+          <div class="ws-lab-arrow-icon" style="background:rgba(202,28,104,0.25);color:rgba(202,28,104,0.9)">→</div>
+        </div>
+        <div class="lab-card w-ai" id="ws-lab-ai-essentials" onclick="openSession('ai-essentials')">
+          <div class="lab-badge">Lab · Jun 17 · 30 min</div>
+          <div class="lab-name">AI Essentials + Know Your Tools Lab</div>
+          <div class="lab-note">Prior to attending, join live workshop or complete async version</div>
         </div>
       </div>
       <div class="oh-bar" onclick="openSession('office-hours')">
@@ -891,18 +957,20 @@ body {
         <div class="month-line"></div>
         <div class="month-tag">Month Two · Map & Standardize</div>
       </div>
-      <div class="workshops-row two-col">
+      <div class="ws-lab-row">
         <div class="ws-card w-rs" id="ws-map-workflow" onclick="openSession('map-workflow')">
-          <div class="ws-half">First half · #4</div>
+          <div class="ws-half">Workshop · #4 · Jul 9 · 60 min</div>
           <div class="ws-name">Map & Simplify a Workflow</div>
-          <div class="ws-meta">60 min (followed by a 30 min lab session)</div>
-          <span class="ws-badge">Run Simple</span>
+          <div class="ws-meta">Run Simple</div>
+          <div class="ws-async-line">📹 Available async on Momenta — day after workshop</div>
         </div>
-        <div class="ws-card w-tg" id="ws-nav-change" onclick="openSession('nav-change')">
-          <div class="ws-half">Second half · #5</div>
-          <div class="ws-name">Navigating Change</div>
-          <div class="ws-meta">60 min (followed by a 30 min lab session)</div>
-          <span class="ws-badge">Talent Growth</span>
+        <div class="ws-lab-arrow">
+          <div class="ws-lab-arrow-icon" style="background:rgba(29,114,121,0.25);color:rgba(29,114,121,0.9)">→</div>
+        </div>
+        <div class="lab-card w-rs" id="ws-lab-map-workflow" onclick="openSession('map-workflow')">
+          <div class="lab-badge">Lab · Jul 16 · 30 min</div>
+          <div class="lab-name">Map & Simplify a Workflow Lab</div>
+          <div class="lab-note">Prior to attending, join live workshop or complete async version</div>
         </div>
       </div>
       <div class="oh-bar" onclick="openSession('office-hours')">
@@ -911,6 +979,22 @@ body {
         <div class="oh-bar-name">ART Office Hours</div>
         <div class="oh-bar-dot"></div>
         <div style="font-size:10px;color:rgba(255,255,255,0.8)">60 min · Open to all</div>
+      </div>
+      <div class="ws-lab-row">
+        <div class="ws-card w-tg" id="ws-nav-change" onclick="openSession('nav-change')">
+          <div class="ws-half">Workshop · #5 · Jul 28 · 60 min</div>
+          <div class="ws-name">Navigating Change</div>
+          <div class="ws-meta">Talent Growth</div>
+          <div class="ws-async-line">📹 Available async on Momenta — day after workshop</div>
+        </div>
+        <div class="ws-lab-arrow">
+          <div class="ws-lab-arrow-icon" style="background:rgba(76,52,128,0.25);color:rgba(76,52,128,0.9)">→</div>
+        </div>
+        <div class="lab-card w-tg" id="ws-lab-nav-change" onclick="openSession('nav-change')">
+          <div class="lab-badge">Lab · Jul 30 · 30 min</div>
+          <div class="lab-name">Navigating Change Lab</div>
+          <div class="lab-note">Prior to attending, join live workshop or complete async version</div>
+        </div>
       </div>
     </div>
 
@@ -924,18 +1008,36 @@ body {
         <div class="month-line"></div>
         <div class="month-tag">Month Three · Simplify</div>
       </div>
-      <div class="workshops-row two-col">
+      <div class="ws-lab-row">
         <div class="ws-card w-ai" id="ws-review-ai" onclick="openSession('review-ai')">
-          <div class="ws-half">First half · #6</div>
+          <div class="ws-half">Workshop · #6 · Aug 6 · 60 min</div>
           <div class="ws-name">Reviewing AI Outputs</div>
-          <div class="ws-meta">60 min (followed by a 30 min lab session)</div>
-          <span class="ws-badge">AI Leadership</span>
+          <div class="ws-meta">AI Leadership</div>
+          <div class="ws-async-line">📹 Available async on Momenta — day after workshop</div>
         </div>
+        <div class="ws-lab-arrow">
+          <div class="ws-lab-arrow-icon" style="background:rgba(202,28,104,0.25);color:rgba(202,28,104,0.9)">→</div>
+        </div>
+        <div class="lab-card w-ai" id="ws-lab-review-ai" onclick="openSession('review-ai')">
+          <div class="lab-badge">Lab · Aug 13 · 30 min</div>
+          <div class="lab-name">Reviewing AI Outputs Lab</div>
+          <div class="lab-note">Prior to attending, join live workshop or complete async version</div>
+        </div>
+      </div>
+      <div class="ws-lab-row">
         <div class="ws-card w-tg" id="ws-leadership" onclick="openSession('leadership')">
-          <div class="ws-half">Second half · #7</div>
+          <div class="ws-half">Workshop · #7 · Aug 18 · 60 min</div>
           <div class="ws-name">Leadership Style</div>
-          <div class="ws-meta">60 min (followed by a 30 min lab session)</div>
-          <span class="ws-badge">Talent Growth</span>
+          <div class="ws-meta">Talent Growth</div>
+          <div class="ws-async-line">📹 Available async on Momenta — day after workshop</div>
+        </div>
+        <div class="ws-lab-arrow">
+          <div class="ws-lab-arrow-icon" style="background:rgba(76,52,128,0.25);color:rgba(76,52,128,0.9)">→</div>
+        </div>
+        <div class="lab-card w-tg" id="ws-lab-leadership" onclick="openSession('leadership')">
+          <div class="lab-badge">Lab · Aug 20 · 30 min</div>
+          <div class="lab-name">Leadership Style Lab</div>
+          <div class="lab-note">Prior to attending, join live workshop or complete async version</div>
         </div>
       </div>
       <div class="oh-bar" onclick="openSession('office-hours')">
@@ -957,18 +1059,36 @@ body {
         <div class="month-line"></div>
         <div class="month-tag">Month Four · Automate & AI</div>
       </div>
-      <div class="workshops-row two-col">
+      <div class="ws-lab-row">
         <div class="ws-card w-ai" id="ws-build-ai" onclick="openSession('build-ai')">
-          <div class="ws-half">First half · #8</div>
+          <div class="ws-half">Workshop · #8 · Sep 3 · 60 min</div>
           <div class="ws-name">Build AI Into Your Workflow</div>
-          <div class="ws-meta">60 min (followed by a 30 min lab session)</div>
-          <span class="ws-badge">AI Leadership</span>
+          <div class="ws-meta">AI Leadership</div>
+          <div class="ws-async-line">📹 Available async on Momenta — day after workshop</div>
         </div>
+        <div class="ws-lab-arrow">
+          <div class="ws-lab-arrow-icon" style="background:rgba(202,28,104,0.25);color:rgba(202,28,104,0.9)">→</div>
+        </div>
+        <div class="lab-card w-ai" id="ws-lab-build-ai" onclick="openSession('build-ai')">
+          <div class="lab-badge">Lab · Sep 11 · 30 min</div>
+          <div class="lab-name">Build AI Into Your Workflow Lab</div>
+          <div class="lab-note">Prior to attending, join live workshop or complete async version</div>
+        </div>
+      </div>
+      <div class="ws-lab-row">
         <div class="ws-card w-ai-rs" id="ws-ctw1" onclick="openSession('ctw1')">
-          <div class="ws-half">Second half · #9 · Role-mixed</div>
+          <div class="ws-half">Workshop · #9 · Sep 15 · 60 min</div>
           <div class="ws-name">Cross-Team Workflow Lab 1</div>
-          <div class="ws-meta">60 min (followed by a 30 min lab session)</div>
-          <span class="ws-badge">Run Simple + AI</span>
+          <div class="ws-meta">Run Simple + AI · Role-mixed</div>
+          <div class="ws-async-line">📹 Available async on Momenta — day after workshop</div>
+        </div>
+        <div class="ws-lab-arrow">
+          <div class="ws-lab-arrow-icon" style="background:rgba(29,100,100,0.25);color:rgba(29,114,121,0.9)">→</div>
+        </div>
+        <div class="lab-card w-ai-rs" id="ws-lab-ctw1" onclick="openSession('ctw1')">
+          <div class="lab-badge">Lab · Sep 18 · 30 min</div>
+          <div class="lab-name">Cross-Team Workflow Lab 1 Lab</div>
+          <div class="lab-note">Prior to attending, join live workshop or complete async version</div>
         </div>
       </div>
       <div class="oh-bar" onclick="openSession('office-hours')">
@@ -990,18 +1110,36 @@ body {
         <div class="month-line"></div>
         <div class="month-tag">Month Five · Automate & AI</div>
       </div>
-      <div class="workshops-row two-col">
+      <div class="ws-lab-row">
         <div class="ws-card w-ai" id="ws-agents" onclick="openSession('agents')">
-          <div class="ws-half">First half · #10</div>
+          <div class="ws-half">Workshop · #10 · Oct 1 · 60 min</div>
           <div class="ws-name">Agents 101</div>
-          <div class="ws-meta">60 min (followed by a 30 min lab session)</div>
-          <span class="ws-badge">AI Leadership</span>
+          <div class="ws-meta">AI Leadership</div>
+          <div class="ws-async-line">📹 Available async on Momenta — day after workshop</div>
         </div>
+        <div class="ws-lab-arrow">
+          <div class="ws-lab-arrow-icon" style="background:rgba(202,28,104,0.25);color:rgba(202,28,104,0.9)">→</div>
+        </div>
+        <div class="lab-card w-ai" id="ws-lab-agents" onclick="openSession('agents')">
+          <div class="lab-badge">Lab · Oct 16 · 30 min</div>
+          <div class="lab-name">Agents 101 Lab</div>
+          <div class="lab-note">Prior to attending, join live workshop or complete async version</div>
+        </div>
+      </div>
+      <div class="ws-lab-row">
         <div class="ws-card w-ai-rs" id="ws-ctw2" onclick="openSession('ctw2')">
-          <div class="ws-half">Second half · #11 · Role-mixed</div>
+          <div class="ws-half">Workshop · #11 · Oct 20 · 60 min</div>
           <div class="ws-name">Cross-Team Workflow Lab 2</div>
-          <div class="ws-meta">60 min (followed by a 30 min lab session)</div>
-          <span class="ws-badge">Run Simple + AI</span>
+          <div class="ws-meta">Run Simple + AI · Role-mixed</div>
+          <div class="ws-async-line">📹 Available async on Momenta — day after workshop</div>
+        </div>
+        <div class="ws-lab-arrow">
+          <div class="ws-lab-arrow-icon" style="background:rgba(29,100,100,0.25);color:rgba(29,114,121,0.9)">→</div>
+        </div>
+        <div class="lab-card w-ai-rs" id="ws-lab-ctw2" onclick="openSession('ctw2')">
+          <div class="lab-badge">Lab · Oct 23 · 30 min</div>
+          <div class="lab-name">Cross-Team Workflow Lab 2 Lab</div>
+          <div class="lab-note">Prior to attending, join live workshop or complete async version</div>
         </div>
       </div>
       <div class="oh-bar" onclick="openSession('office-hours')">
@@ -1023,18 +1161,36 @@ body {
         <div class="month-line"></div>
         <div class="month-tag">Month Six · Automate & AI</div>
       </div>
-      <div class="workshops-row two-col">
+      <div class="ws-lab-row">
         <div class="ws-card w-tg-rs" id="ws-prioritize" onclick="openSession('prioritize')">
-          <div class="ws-half">First half · #12</div>
+          <div class="ws-half">Workshop · #12 · Nov 5 · 60 min</div>
           <div class="ws-name">Prioritize What Matters</div>
-          <div class="ws-meta">60 min (followed by a 30 min lab session)</div>
-          <span class="ws-badge">Talent Growth + Run Simple</span>
+          <div class="ws-meta">Talent Growth + Run Simple</div>
+          <div class="ws-async-line">📹 Available async on Momenta — day after workshop</div>
         </div>
+        <div class="ws-lab-arrow">
+          <div class="ws-lab-arrow-icon" style="background:rgba(60,80,120,0.25);color:rgba(76,52,128,0.9)">→</div>
+        </div>
+        <div class="lab-card w-tg-rs" id="ws-lab-prioritize" onclick="openSession('prioritize')">
+          <div class="lab-badge">Lab · Nov 13 · 30 min</div>
+          <div class="lab-name">Prioritize What Matters Lab</div>
+          <div class="lab-note">Prior to attending, join live workshop or complete async version</div>
+        </div>
+      </div>
+      <div class="ws-lab-row">
         <div class="ws-card w-ai-rs" id="ws-ctw3" onclick="openSession('ctw3')">
-          <div class="ws-half">Second half · #13 · Role-mixed</div>
+          <div class="ws-half">Workshop · #13 · Nov 17 · 60 min</div>
           <div class="ws-name">Cross-Team Workflow Lab 3</div>
-          <div class="ws-meta">60 min (followed by a 30 min lab session)</div>
-          <span class="ws-badge">Run Simple + AI</span>
+          <div class="ws-meta">Run Simple + AI · Role-mixed</div>
+          <div class="ws-async-line">📹 Available async on Momenta — day after workshop</div>
+        </div>
+        <div class="ws-lab-arrow">
+          <div class="ws-lab-arrow-icon" style="background:rgba(29,100,100,0.25);color:rgba(29,114,121,0.9)">→</div>
+        </div>
+        <div class="lab-card w-ai-rs" id="ws-lab-ctw3" onclick="openSession('ctw3')">
+          <div class="lab-badge">Lab · Nov 20 · 30 min</div>
+          <div class="lab-name">Cross-Team Workflow Lab 3 Lab</div>
+          <div class="lab-note">Prior to attending, join live workshop or complete async version</div>
         </div>
       </div>
       <div class="oh-bar" onclick="openSession('office-hours')">
@@ -1332,7 +1488,6 @@ body {
       <div class="cal-leg"><div class="cal-leg-dot" style="background:var(--bts-magenta)"></div>AI Leadership</div>
       <div class="cal-leg"><div class="cal-leg-dot" style="background:var(--bts-emerald)"></div>Run Simple</div>
       <div class="cal-leg"><div class="cal-leg-dot" style="background:var(--bts-purple)"></div>Talent Growth</div>
-      <div class="cal-leg"><div class="cal-leg-dot" style="background:linear-gradient(135deg,var(--bts-emerald),var(--bts-magenta))"></div>Run Simple + AI</div>
       <div class="cal-leg"><div class="cal-leg-dot" style="background:#0db4ab"></div>Office Hours</div>
       <div class="cal-leg"><div class="cal-leg-dot" style="background:rgba(202,28,104,0.75);border:1.5px dashed var(--bts-magenta)"></div>Lab (30 min — matches workshop color)</div>
     </div>
@@ -1851,7 +2006,7 @@ const connections = {
 const noticeMessages = {
   q1: 'These are the sessions you asked for most. Every highlighted workshop came directly from what you said you wanted to learn — not from a curriculum, not from a guess. From you.',
   q3: 'You told us the skills that matter most to you right now. These sessions were built to develop exactly those capabilities — hands-on, in real work, with real outcomes.',
-  q4: 'Notice how what you said slows you down and what lights you up both shaped this journey. You said AI pressure and not knowing who to ask slows you down — so we built Engaging in AI Conversations first, before any skills training. You named unclear direction and constant change — so Navigating Change lands in July, before the heavier work begins. You said competing priorities drain you — so Prioritize What Matters has a Wellness Coach and lands in November when the pressure peaks. You said collaboration and working across teams energizes you — so three Cross-Team Workflow Labs run September through November with a team you choose. You said having time to think strategically lights you up — so every session is 60 minutes, focused, and followed by a lab so you can practice, not just listen. You said process wins give you momentum — so Map & Simplify a Workflow comes in July, early enough to build that momentum before the AI integration sessions begin.',
+  q4: 'Notice how what you said slows you down and what lights you up both shaped this journey. You said AI pressure and not knowing who to ask slows you down — so we built Engaging in AI Conversations first, before any skills training. You named unclear direction and constant change — so Navigating Change lands in July, before the heavier work begins. You said competing priorities drain you — so Prioritize What Matters lands in November when the pressure peaks. You said collaboration and working across teams energizes you — so three Cross-Team Workflow Labs run September through November with a team you choose. You said having time to think strategically lights you up — so every session is 60 minutes, focused, and followed by a lab so you can practice. You said process wins give you momentum — so Map & Simplify a Workflow comes in July, early enough to build that momentum before the AI integration sessions begin.',
   q5: 'You told us you learn best by doing, not by listening. Notice how these sessions are structured — short, practical, multiple touchpoints, with time to actually try things. That\'s not an accident. That\'s you.',
   q5: 'Notice how your learning preferences are built into every session on this map. You said 60 minutes or less — every workshop is exactly 60 minutes. You said hands-on and practical — every session ends with you having done something real, not just heard about it. You said multiple touchpoints — the Cross-Team Workflow Labs run three months in a row, the Office Hours are monthly, and the journey itself spans May to December. You said you want a recorded option — every session lives on Momenta as an async version. You said peer collaboration — the Labs bring mixed teams together to work on real shared problems. You asked for this. Every session you see lit up was designed around how you told us you actually learn.',
   'q2-efficiency': 'You said process efficiency is where you need the most impact. These sessions give you the tools to find where your workflows are breaking down and fix them — before adding any technology.',
@@ -1865,10 +2020,15 @@ function connectMapSingle(wsIds, noticeMsg) {
   showScreen('journey');
   setTimeout(() => {
     clearHighlights();
-    document.querySelectorAll('.ws-card').forEach(c => c.classList.add('dim'));
+    document.querySelectorAll('.ws-card, .lab-card, .oh-bar').forEach(c => c.classList.add('dim'));
     wsIds.forEach(id => {
+      // Light up the workshop
       const el = document.getElementById(id);
       if (el) { el.classList.remove('dim'); el.classList.add('hl-survey'); }
+      // Light up ONLY the lab that belongs to this specific workshop
+      const labId = 'ws-lab-' + id.replace('ws-','');
+      const lab = document.getElementById(labId);
+      if (lab) { lab.classList.remove('dim'); lab.classList.add('hl-survey'); }
     });
     document.querySelector('.journey-wrap').scrollIntoView({behavior:'smooth', block:'start'});
     if (noticeMsg) {
@@ -1881,17 +2041,17 @@ function connectMapSingle(wsIds, noticeMsg) {
 function connectMap(type, e) {
   e.stopPropagation();
   showScreen('journey');
-
   setTimeout(() => {
     clearHighlights();
-    document.querySelectorAll('.ws-card').forEach(c=>c.classList.add('dim'));
+    document.querySelectorAll('.ws-card, .lab-card, .oh-bar').forEach(c=>c.classList.add('dim'));
     (connections[type]||[]).forEach(id => {
       const el = document.getElementById(id);
       if (el) { el.classList.remove('dim'); el.classList.add('hl-survey'); }
+      // Only light up the lab that belongs to this specific workshop
+      const lab = document.getElementById('ws-lab-' + id.replace('ws-',''));
+      if (lab) { lab.classList.remove('dim'); lab.classList.add('hl-survey'); }
     });
     document.querySelector('.journey-wrap').scrollIntoView({behavior:'smooth', block:'start'});
-
-    // Show notice card
     const msg = noticeMessages[type];
     if (msg) {
       document.getElementById('notice-text').textContent = msg;
@@ -1905,7 +2065,7 @@ function closeNotice() {
 }
 
 function clearHighlights() {
-  document.querySelectorAll('.ws-card').forEach(c => {
+  document.querySelectorAll('.ws-card, .lab-card, .oh-bar').forEach(c => {
     c.classList.remove('dim','hl-persona','hl-survey','hl-b1','hl-b2','hl-b3','active-card');
   });
 }
@@ -2053,7 +2213,7 @@ function showPersonaOnMap(key) {
   showScreen('journey');
   setTimeout(() => {
     clearHighlights();
-    document.querySelectorAll('.ws-card').forEach(c=>c.classList.add('dim'));
+    document.querySelectorAll('.ws-card, .lab-card, .oh-bar').forEach(c=>c.classList.add('dim'));
 
     // Highlight each bucket in its color
     const allSessions = [
@@ -2068,6 +2228,9 @@ function showPersonaOnMap(key) {
           fc.ids.forEach(wsId => {
             const el = document.getElementById(wsId);
             if (el) { el.classList.remove('dim'); el.classList.add(cls); }
+            // Only light up the lab belonging to this specific workshop
+            const lab = document.getElementById('ws-lab-' + wsId.replace('ws-',''));
+            if (lab) { lab.classList.remove('dim'); lab.classList.add(cls); }
           });
         }
       });
