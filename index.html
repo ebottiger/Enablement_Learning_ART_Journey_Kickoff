@@ -1033,7 +1033,7 @@ body {
           <div class="lab-note">Prior to attending, join live workshop or complete async version</div>
         </div>
       </div>
-      <div class="oh-bar" onclick="openSession('office-hours')">
+      <div class="oh-bar" id="oh-bar-jun" onclick="openSession('office-hours')">
         <div class="oh-bar-label">Monthly</div>
         <div class="oh-bar-dot"></div>
         <div class="oh-bar-name">ART Office Hours</div>
@@ -1068,7 +1068,7 @@ body {
           <div class="lab-note">Prior to attending, join live workshop or complete async version</div>
         </div>
       </div>
-      <div class="oh-bar" onclick="openSession('office-hours')">
+      <div class="oh-bar" id="oh-bar-jul" onclick="openSession('office-hours')">
         <div class="oh-bar-label">Monthly</div>
         <div class="oh-bar-dot"></div>
         <div class="oh-bar-name">ART Office Hours</div>
@@ -1135,7 +1135,7 @@ body {
           <div class="lab-note">Prior to attending, join live workshop or complete async version</div>
         </div>
       </div>
-      <div class="oh-bar" onclick="openSession('office-hours')">
+      <div class="oh-bar" id="oh-bar-aug" onclick="openSession('office-hours')">
         <div class="oh-bar-label">Monthly</div>
         <div class="oh-bar-dot"></div>
         <div class="oh-bar-name">ART Office Hours</div>
@@ -1182,11 +1182,11 @@ body {
         </div>
         <div class="lab-card w-ai-rs" id="ws-lab-ctw1" onclick="openSession('ctw1')">
           <div class="lab-badge">Lab · Sep 18 · 30 min</div>
-          <div class="lab-name">Cross-Team Workflow Lab 1 Lab</div>
+          <div class="lab-name">Cross-Team Workflow Lab 1 Continued</div>
           <div class="lab-note">Prior to attending, join live workshop or complete async version</div>
         </div>
       </div>
-      <div class="oh-bar" onclick="openSession('office-hours')">
+      <div class="oh-bar" id="oh-bar-sep" onclick="openSession('office-hours')">
         <div class="oh-bar-label">Monthly</div>
         <div class="oh-bar-dot"></div>
         <div class="oh-bar-name">ART Office Hours</div>
@@ -1233,11 +1233,11 @@ body {
         </div>
         <div class="lab-card w-ai-rs" id="ws-lab-ctw2" onclick="openSession('ctw2')">
           <div class="lab-badge">Lab · Oct 23 · 30 min</div>
-          <div class="lab-name">Cross-Team Workflow Lab 2 Lab</div>
+          <div class="lab-name">Cross-Team Workflow Lab 2 Continued</div>
           <div class="lab-note">Prior to attending, join live workshop or complete async version</div>
         </div>
       </div>
-      <div class="oh-bar" onclick="openSession('office-hours')">
+      <div class="oh-bar" id="oh-bar-oct" onclick="openSession('office-hours')">
         <div class="oh-bar-label">Monthly</div>
         <div class="oh-bar-dot"></div>
         <div class="oh-bar-name">ART Office Hours</div>
@@ -1284,11 +1284,11 @@ body {
         </div>
         <div class="lab-card w-ai-rs" id="ws-lab-ctw3" onclick="openSession('ctw3')">
           <div class="lab-badge">Lab · Nov 20 · 30 min</div>
-          <div class="lab-name">Cross-Team Workflow Lab 3 Lab</div>
+          <div class="lab-name">Cross-Team Workflow Lab 3 Continued</div>
           <div class="lab-note">Prior to attending, join live workshop or complete async version</div>
         </div>
       </div>
-      <div class="oh-bar" onclick="openSession('office-hours')">
+      <div class="oh-bar" id="oh-bar-nov" onclick="openSession('office-hours')">
         <div class="oh-bar-label">Monthly</div>
         <div class="oh-bar-dot"></div>
         <div class="oh-bar-name">ART Office Hours</div>
@@ -1704,17 +1704,17 @@ const tlData = [
       { type:'lab',   color:'ai',    name:'Engaging in AI Conversations Lab', date:'Thu Jun 11',     time:'9–9:30am PT · 12–12:30pm ET',   session:'ai-conv' },
       { type:'ws',    color:'ai',    name:'AI Essentials + Know Your Tools',  date:'Tue Jun 16',     time:'11am–12pm PT · 2–3pm ET',       session:'ai-essentials' },
       { type:'lab',   color:'ai',    name:'AI Essentials Lab',                date:'Wed Jun 17',     time:'9–9:30am PT · 12–12:30pm ET',   session:'ai-essentials' },
-      { type:'oh',    color:'oh',    name:'ART Office Hours',                 date:'Tue Jun 23',     time:'11am–12pm PT · 2–3pm ET',       session:'office-hours' },
+      { type:'oh',    color:'oh',    name:'ART Office Hours',                 date:'Tue Jun 23',     time:'11am–12pm PT · 2–3pm ET',       session:'oh-jun' },
       { type:'ws',    color:'rs',    name:'Map & Simplify a Workflow',        date:'Thu Jul 9',      time:'11am–12pm PT · 2–3pm ET',       session:'map-workflow' },
       { type:'lab',   color:'rs',    name:'Map & Simplify a Workflow Lab',    date:'Thu Jul 16',     time:'9–9:30am PT · 12–12:30pm ET',   session:'map-workflow' },
-      { type:'oh',    color:'oh',    name:'ART Office Hours',                 date:'Thu Jul 23',     time:'11am–12pm PT · 2–3pm ET',       session:'office-hours' },
+      { type:'oh',    color:'oh',    name:'ART Office Hours',                 date:'Thu Jul 23',     time:'11am–12pm PT · 2–3pm ET',       session:'oh-jul' },
       { type:'ws',    color:'tg',    name:'Navigating Change',                date:'Tue Jul 28',     time:'11am–12pm PT · 2–3pm ET',       session:'nav-change' },
       { type:'lab',   color:'tg',    name:'Navigating Change Lab',            date:'Thu Jul 30',     time:'9–9:30am PT · 12–12:30pm ET',   session:'nav-change' },
       { type:'ws',    color:'ai',    name:'Reviewing AI Outputs',             date:'Thu Aug 6',      time:'11am–12pm PT · 2–3pm ET',       session:'review-ai' },
       { type:'lab',   color:'ai',    name:'Reviewing AI Outputs Lab',         date:'Wed Aug 13',     time:'9–9:30am PT · 12–12:30pm ET',   session:'review-ai' },
       { type:'ws',    color:'tg',    name:'Leadership Style',                 date:'Tue Aug 18',     time:'11am–12pm PT · 2–3pm ET',       session:'leadership' },
       { type:'lab',   color:'tg',    name:'Leadership Style Lab',             date:'Thu Aug 20',     time:'9–9:30am PT · 12–12:30pm ET',   session:'leadership' },
-      { type:'oh',    color:'oh',    name:'ART Office Hours',                 date:'Thu Aug 27',     time:'11am–12pm PT · 2–3pm ET',       session:'office-hours' },
+      { type:'oh',    color:'oh',    name:'ART Office Hours',                 date:'Thu Aug 27',     time:'11am–12pm PT · 2–3pm ET',       session:'oh-aug' },
     ]
   },
   {
@@ -1724,18 +1724,18 @@ const tlData = [
       { type:'ws',    color:'ai',    name:'Build AI Into Your Workflow',      date:'Thu Sep 3',      time:'11am–12pm PT · 2–3pm ET',       session:'build-ai' },
       { type:'lab',   color:'ai',    name:'Build AI Into Your Workflow Lab',  date:'Fri Sep 11',     time:'9–9:30am PT · 12–12:30pm ET',   session:'build-ai' },
       { type:'ws',    color:'ai-rs', name:'Cross-Team Workflow Lab 1',        date:'Tue Sep 15',     time:'11am–12pm PT · 2–3pm ET',       session:'ctw1' },
-      { type:'lab',   color:'ai-rs', name:'Cross-Team Workflow Lab 1 Lab',   date:'Fri Sep 18',     time:'9–9:30am PT · 12–12:30pm ET',   session:'ctw1' },
-      { type:'oh',    color:'oh',    name:'ART Office Hours',                 date:'Thu Sep 24',     time:'11am–12pm PT · 2–3pm ET',       session:'office-hours' },
+      { type:'lab',   color:'ai-rs', name:'Cross-Team Workflow Lab 1 Continued',   date:'Fri Sep 18',     time:'9–9:30am PT · 12–12:30pm ET',   session:'ctw1' },
+      { type:'oh',    color:'oh',    name:'ART Office Hours',                 date:'Thu Sep 24',     time:'11am–12pm PT · 2–3pm ET',       session:'oh-sep' },
       { type:'ws',    color:'ai',    name:'Agents 101',                       date:'Thu Oct 1',      time:'11am–12pm PT · 2–3pm ET',       session:'agents' },
       { type:'lab',   color:'ai',    name:'Agents 101 Lab',                   date:'Fri Oct 16',     time:'9–9:30am PT · 12–12:30pm ET',   session:'agents' },
       { type:'ws',    color:'ai-rs', name:'Cross-Team Workflow Lab 2',        date:'Tue Oct 20',     time:'11am–12pm PT · 2–3pm ET',       session:'ctw2' },
-      { type:'lab',   color:'ai-rs', name:'Cross-Team Workflow Lab 2 Lab',   date:'Fri Oct 23',     time:'9–9:30am PT · 12–12:30pm ET',   session:'ctw2' },
-      { type:'oh',    color:'oh',    name:'ART Office Hours',                 date:'Thu Oct 29',     time:'11am–12pm PT · 2–3pm ET',       session:'office-hours' },
+      { type:'lab',   color:'ai-rs', name:'Cross-Team Workflow Lab 2 Continued',   date:'Fri Oct 23',     time:'9–9:30am PT · 12–12:30pm ET',   session:'ctw2' },
+      { type:'oh',    color:'oh',    name:'ART Office Hours',                 date:'Thu Oct 29',     time:'11am–12pm PT · 2–3pm ET',       session:'oh-oct' },
       { type:'ws',    color:'tg-rs', name:'Prioritize What Matters',          date:'Thu Nov 5',      time:'11am–12pm PT · 2–3pm ET',       session:'prioritize' },
       { type:'lab',   color:'tg-rs', name:'Prioritize What Matters Lab',      date:'Fri Nov 13',     time:'9–9:30am PT · 12–12:30pm ET',   session:'prioritize' },
       { type:'ws',    color:'ai-rs', name:'Cross-Team Workflow Lab 3',        date:'Tue Nov 17',     time:'11am–12pm PT · 2–3pm ET',       session:'ctw3' },
-      { type:'oh',    color:'oh',    name:'ART Office Hours',                 date:'Wed Nov 18',     time:'11am–12pm PT · 2–3pm ET',       session:'office-hours' },
-      { type:'lab',   color:'ai-rs', name:'Cross-Team Workflow Lab 3 Lab',   date:'Fri Nov 20',     time:'9–9:30am PT · 12–12:30pm ET',   session:'ctw3' },
+      { type:'oh',    color:'oh',    name:'ART Office Hours',                 date:'Wed Nov 18',     time:'11am–12pm PT · 2–3pm ET',       session:'oh-nov' },
+      { type:'lab',   color:'ai-rs', name:'Cross-Team Workflow Lab 3 Continued',   date:'Fri Nov 20',     time:'9–9:30am PT · 12–12:30pm ET',   session:'ctw3' },
       { type:'cap',   color:'cap',   name:'ART Celebration Showcase',         date:'Wed Dec 2',      time:'11am–12:30pm PT · 2–3:30pm ET', session:'capstone' },
     ]
   }
@@ -1795,7 +1795,7 @@ function renderTimeline() {
               <div class="tl-popup-name">${node.name}</div>
               <div class="tl-popup-date">${node.date}</div>
               <div class="tl-popup-time">${node.time}</div>
-              <button class="tl-popup-btn" onclick="tlGoToMap('${node.session}');event.stopPropagation()">🗺 See on Journey Map</button>
+              <button class="tl-popup-btn" onclick="tlGoToMap('${node.session}','${node.type}');event.stopPropagation()">🗺 See on Journey Map</button>
             </div>
           </div>`;
     });
@@ -1828,16 +1828,21 @@ function tlClosePopup(nodeId) {
   document.getElementById('pop-' + nodeId).classList.remove('open');
 }
 
-function tlGoToMap(sessionId) {
+function tlGoToMap(sessionId, nodeType) {
   showScreen('journey');
   setTimeout(() => {
     clearHighlights();
     document.querySelectorAll('.ws-card, .lab-card, .oh-bar').forEach(c => c.classList.add('dim'));
-    const wsId = 'ws-' + sessionId;
-    const el = document.getElementById(wsId);
-    if (el) { el.classList.remove('dim'); el.classList.add('hl-survey'); }
-    const lab = document.getElementById('ws-lab-' + sessionId);
-    if (lab) { lab.classList.remove('dim'); lab.classList.add('hl-survey'); }
+    if (sessionId.startsWith('oh-')) {
+      const el = document.getElementById('oh-bar-' + sessionId.replace('oh-',''));
+      if (el) { el.classList.remove('dim'); el.classList.add('hl-survey'); }
+    } else if (nodeType === 'lab') {
+      const lab = document.getElementById('ws-lab-' + sessionId);
+      if (lab) { lab.classList.remove('dim'); lab.classList.add('hl-survey'); }
+    } else {
+      const el = document.getElementById('ws-' + sessionId);
+      if (el) { el.classList.remove('dim'); el.classList.add('hl-survey'); }
+    }
     document.querySelector('.journey-wrap').scrollIntoView({behavior:'smooth', block:'start'});
   }, 120);
 }
