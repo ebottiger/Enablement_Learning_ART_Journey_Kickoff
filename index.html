@@ -389,7 +389,7 @@ body {
 .insights-intro { margin-bottom: 36px; }
 .insights-intro h1 { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
 .insights-intro p { font-size: 13px; color: rgba(255,255,255,0.8); line-height: 1.7; max-width: 580px; }
-.brene-q { margin-top: 12px; font-style: italic; color: var(--bts-magenta-mid); font-size: 13px; border-left: 2px solid var(--bts-magenta); padding-left: 12px; line-height: 1.6; }
+.brene-q { margin-top: 12px; font-style: italic; color: var(--bts-magenta-mid); font-size: 24px; border-left: 2px solid var(--bts-magenta); padding-left: 12px; line-height: 1.4; }
 
 .stats-grid {
   display: grid;
@@ -834,6 +834,100 @@ body {
 .cal-leg { display: flex; align-items: center; gap: 6px; font-size: 11px; color: rgba(255,255,255,0.5); }
 .cal-leg-dot { width: 10px; height: 10px; border-radius: 3px; flex-shrink: 0; }
 
+/* ══════════════════════════════════
+   TIMELINE TAB
+══════════════════════════════════ */
+.tl-wrap { max-width: 1100px; margin: 0 auto; padding: 36px 36px 80px; }
+.tl-intro { margin-bottom: 32px; }
+.tl-intro h1 { font-size: 24px; font-weight: 700; color: white; margin-bottom: 6px; }
+.tl-intro p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+
+.tl-half { margin-bottom: 56px; }
+.tl-half-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  color: rgba(255,255,255,0.35); margin-bottom: 28px;
+}
+
+.tl-track { position: relative; padding-bottom: 80px; }
+
+.tl-nodes {
+  display: flex; align-items: center; gap: 0;
+  position: relative;
+}
+
+/* The connecting line sits behind the nodes */
+.tl-nodes::before {
+  content: '';
+  position: absolute;
+  top: 24px; left: 0; right: 0;
+  height: 2px;
+  background: rgba(255,255,255,0.15);
+  z-index: 0;
+}
+
+/* Each node */
+.tl-node {
+  display: flex; flex-direction: column; align-items: center;
+  position: relative; cursor: pointer;
+  flex: 1; min-width: 0; z-index: 1;
+}
+
+/* Icon — no box, just the SVG on a transparent bg with a colored dot below */
+.tl-node-icon {
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  position: relative; z-index: 2;
+  transition: transform 0.15s;
+}
+.tl-node:hover .tl-node-icon { transform: translateY(-3px); }
+.tl-node-icon svg { width: 28px; height: 28px; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.4)); }
+
+.tl-node-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  margin: 3px 0 4px; flex-shrink: 0;
+  border: 2px solid rgba(255,255,255,0.2);
+  position: relative; z-index: 2;
+}
+
+.tl-node-label {
+  font-size: 8px; font-weight: 600; color: rgba(255,255,255,0.4);
+  text-align: center; line-height: 1.3; letter-spacing: 0.3px;
+  text-transform: uppercase; max-width: 100%;
+}
+
+/* Popup card on click */
+.tl-popup {
+  position: absolute; top: 64px; left: 50%; transform: translateX(-50%);
+  background: #1e2225; border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 10px; padding: 14px 16px; width: 210px;
+  z-index: 300; box-shadow: 0 8px 28px rgba(0,0,0,0.6);
+  display: none;
+}
+.tl-popup.open { display: block; }
+.tl-popup::before {
+  content: ''; position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%);
+  border: 7px solid transparent; border-bottom-color: rgba(255,255,255,0.12);
+}
+.tl-popup-name { font-size: 13px; font-weight: 700; color: white; margin-bottom: 5px; line-height: 1.3; }
+.tl-popup-date { font-size: 11px; color: rgba(255,255,255,0.6); margin-bottom: 2px; }
+.tl-popup-time { font-size: 11px; color: rgba(255,255,255,0.5); margin-bottom: 10px; }
+.tl-popup-btn {
+  display: block; text-align: center;
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 6px; padding: 7px 10px; font-size: 11px; color: white;
+  cursor: pointer; transition: background 0.15s; width: 100%;
+}
+.tl-popup-btn:hover { background: rgba(255,255,255,0.16); }
+.tl-popup-close {
+  position: absolute; top: 8px; right: 8px;
+  background: none; border: none; color: rgba(255,255,255,0.4);
+  font-size: 14px; cursor: pointer; padding: 2px 5px; line-height: 1;
+}
+
+.tl-legend { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 8px; padding: 12px 16px; background: rgba(255,255,255,0.04); border-radius: 8px; }
+.tl-leg { display: flex; align-items: center; gap: 8px; font-size: 11px; color: rgba(255,255,255,0.5); }
+.tl-leg svg { width: 22px; height: 22px; filter: drop-shadow(0 1px 3px rgba(0,0,0,0.3)); }
+
 .copyright { padding: 16px 36px; font-size: 10px; color: rgba(255,255,255,0.15); letter-spacing: 0.5px; }
 </style>
 </head>
@@ -855,6 +949,7 @@ body {
   <div class="nav-tab" onclick="showScreen('insights')">📊&nbsp; Survey Insights</div>
   <div class="nav-tab" onclick="showScreen('personas')">🧭&nbsp; My AI Persona</div>
   <div class="nav-tab" onclick="showScreen('calendar')">📅&nbsp; Calendar</div>
+  <div class="nav-tab" onclick="showScreen('timeline')">📍&nbsp; Timeline</div>
 </div>
 
 
@@ -1441,6 +1536,16 @@ body {
   </div>
 </div>
 
+<!-- SURVEY INSIGHTS FIRST VISIT OVERLAY -->
+<div class="fv-overlay hidden" id="fv-insights">
+  <div class="fv-modal">
+    <div class="fv-icon">📊</div>
+    <div class="fv-title">This page is interactive</div>
+    <div class="fv-body">Click any bar, any slice in the donut, or the "See how the journey addresses this" buttons to see how your survey responses connect directly to the workshops on the journey map.</div>
+    <button class="fv-btn" onclick="dismissOverlay('fv-insights')">Got it — show me the data</button>
+  </div>
+</div>
+
 <!-- CALENDAR FIRST VISIT OVERLAY -->
 <div class="fv-overlay hidden" id="fv-calendar">
   <div class="fv-modal">
@@ -1499,7 +1604,252 @@ body {
   <div class="copyright">Copyright © 2026 BTS</div>
 </div>
 
+<!-- ══════════════════════════════════
+     SCREEN 5: TIMELINE
+══════════════════════════════════ -->
+<div class="screen" id="screen-timeline">
+  <div class="tl-wrap">
+    <div class="tl-intro">
+      <h1>ART Journey Timeline</h1>
+      <p>Every session in chronological order. Hover any node to see the date and times. Click "See on Journey Map" to navigate directly to that workshop.</p>
+    </div>
+    <div id="tl-content"></div>
+    <div class="tl-legend" id="tl-legend"></div>
+  </div>
+  <div class="copyright">Copyright © 2026 BTS</div>
+</div>
+
 <script>
+// ── TIMELINE DATA ──
+const tlColors = {
+  ai:    '#ca1c68',
+  rs:    '#1d7279',
+  tg:    '#4c3480',
+  'ai-rs': 'linear-gradient(135deg,#1d7279,#ca1c68)',
+  'tg-rs': 'linear-gradient(135deg,#4c3480,#1d7279)',
+  oh:    '#0db4ab',
+  cap:   'linear-gradient(135deg,#ca1c68,#1d7279,#4c3480)',
+  kick:  '#1d7279',
+};
+
+function svgWorkshop(c) {
+  return `<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+    <rect x="3" y="4" width="26" height="17" rx="2.5" fill="${c}" opacity="0.9"/>
+    <rect x="5" y="6" width="22" height="13" rx="1.5" fill="white" opacity="0.25"/>
+    <circle cx="11" cy="11" r="2.5" fill="white" opacity="0.9"/>
+    <rect x="8.5" y="13" width="5" height="4" rx="1" fill="white" opacity="0.9"/>
+    <circle cx="16" cy="11" r="2.5" fill="white" opacity="0.9"/>
+    <rect x="13.5" y="13" width="5" height="4" rx="1" fill="white" opacity="0.9"/>
+    <circle cx="21" cy="11" r="2.5" fill="white" opacity="0.9"/>
+    <rect x="18.5" y="13" width="5" height="4" rx="1" fill="white" opacity="0.9"/>
+    <rect x="14" y="21" width="4" height="3" rx="1" fill="${c}" opacity="0.8"/>
+    <rect x="10" y="24" width="12" height="2.5" rx="1.25" fill="${c}" opacity="0.8"/>
+  </svg>`;
+}
+
+function svgLab(c) {
+  return `<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+    <path d="M19 6 L19 14 L26 24 Q27 26 25 26 L13 26 Q11 26 12 24 L19 14 L19 6 Z" fill="${c}" opacity="0.85"/>
+    <rect x="16" y="4" width="6" height="3.5" rx="1" fill="${c}"/>
+    <path d="M13.5 21 L24.5 21 L26 24 Q27 26 25 26 L13 26 Q11 26 12 24 Z" fill="white" opacity="0.3"/>
+    <path d="M10 7 L10 15 L5 23 Q4 25 6 25 L14 25 Q16 25 15 23 L10 15 L10 7 Z" fill="${c}" opacity="0.7"/>
+    <rect x="8" y="5" width="4.5" height="3" rx="1" fill="${c}" opacity="0.7"/>
+    <path d="M6 21 L14 21 L15 23 Q16 25 14 25 L6 25 Q4 25 5 23 Z" fill="white" opacity="0.25"/>
+    <circle cx="23" cy="9" r="1.2" fill="white" opacity="0.6"/>
+    <circle cx="25" cy="6" r="0.8" fill="white" opacity="0.4"/>
+  </svg>`;
+}
+
+function svgOH() {
+  return `<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="13" cy="16" r="5" fill="#0db4ab"/>
+    <path d="M5 28 Q5 22 13 22 Q21 22 21 28" fill="#0db4ab"/>
+    <rect x="18" y="5" width="12" height="9" rx="2.5" fill="#0db4ab"/>
+    <path d="M20 14 L18 18 L24 14 Z" fill="#0db4ab"/>
+    <circle cx="21" cy="9.5" r="1.2" fill="white" opacity="0.9"/>
+    <circle cx="24" cy="9.5" r="1.2" fill="white" opacity="0.9"/>
+    <circle cx="27" cy="9.5" r="1.2" fill="white" opacity="0.9"/>
+  </svg>`;
+}
+
+function svgCapstone() {
+  return `<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+    <rect x="2" y="24" width="8" height="5" rx="1" fill="#4c3480"/>
+    <rect x="12" y="18" width="8" height="11" rx="1" fill="#4c3480"/>
+    <rect x="22" y="12" width="8" height="17" rx="1" fill="#4c3480"/>
+    <rect x="26" y="4" width="2" height="10" rx="1" fill="white" opacity="0.8"/>
+    <path d="M28 4 L32 6.5 L28 9 Z" fill="#ca1c68"/>
+    <circle cx="24" cy="9" r="3" fill="#ca1c68"/>
+    <path d="M19 18 Q19 14 24 14 Q29 14 29 16" fill="none" stroke="#ca1c68" stroke-width="2" stroke-linecap="round"/>
+  </svg>`;
+}
+
+function svgKickoff() {
+  return `<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="15" cy="18" r="12" fill="none" stroke="#1d7279" stroke-width="2.5"/>
+    <circle cx="15" cy="18" r="7.5" fill="none" stroke="#1d7279" stroke-width="2.5"/>
+    <circle cx="15" cy="18" r="3" fill="#1d7279"/>
+    <line x1="24" y1="6" x2="15" y2="18" stroke="#ca1c68" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M24 6 L19.5 8 L22.5 11 Z" fill="#ca1c68"/>
+  </svg>`;
+}
+
+const tlData = [
+  {
+    halfLabel: 'May — August 2026',
+    months: ['MAY','JUN','JUN','JUN','JUN','JUL','JUL','JUL','JUL','AUG','AUG','AUG','AUG','AUG'],
+    nodes: [
+      { type:'kick',  color:'kick',  name:'ART Journey Kickoff',              date:'May 2026',       time:'11am–12pm PT · 2–3pm ET',       session:'kickoff' },
+      { type:'ws',    color:'ai',    name:'Engaging in AI Conversations',     date:'Thu Jun 4',      time:'11am–12pm PT · 2–3pm ET',       session:'ai-conv' },
+      { type:'lab',   color:'ai',    name:'Engaging in AI Conversations Lab', date:'Thu Jun 11',     time:'9–9:30am PT · 12–12:30pm ET',   session:'ai-conv' },
+      { type:'ws',    color:'ai',    name:'AI Essentials + Know Your Tools',  date:'Tue Jun 16',     time:'11am–12pm PT · 2–3pm ET',       session:'ai-essentials' },
+      { type:'lab',   color:'ai',    name:'AI Essentials Lab',                date:'Wed Jun 17',     time:'9–9:30am PT · 12–12:30pm ET',   session:'ai-essentials' },
+      { type:'oh',    color:'oh',    name:'ART Office Hours',                 date:'Tue Jun 23',     time:'11am–12pm PT · 2–3pm ET',       session:'office-hours' },
+      { type:'ws',    color:'rs',    name:'Map & Simplify a Workflow',        date:'Thu Jul 9',      time:'11am–12pm PT · 2–3pm ET',       session:'map-workflow' },
+      { type:'lab',   color:'rs',    name:'Map & Simplify a Workflow Lab',    date:'Thu Jul 16',     time:'9–9:30am PT · 12–12:30pm ET',   session:'map-workflow' },
+      { type:'oh',    color:'oh',    name:'ART Office Hours',                 date:'Thu Jul 23',     time:'11am–12pm PT · 2–3pm ET',       session:'office-hours' },
+      { type:'ws',    color:'tg',    name:'Navigating Change',                date:'Tue Jul 28',     time:'11am–12pm PT · 2–3pm ET',       session:'nav-change' },
+      { type:'lab',   color:'tg',    name:'Navigating Change Lab',            date:'Thu Jul 30',     time:'9–9:30am PT · 12–12:30pm ET',   session:'nav-change' },
+      { type:'ws',    color:'ai',    name:'Reviewing AI Outputs',             date:'Thu Aug 6',      time:'11am–12pm PT · 2–3pm ET',       session:'review-ai' },
+      { type:'lab',   color:'ai',    name:'Reviewing AI Outputs Lab',         date:'Wed Aug 13',     time:'9–9:30am PT · 12–12:30pm ET',   session:'review-ai' },
+      { type:'ws',    color:'tg',    name:'Leadership Style',                 date:'Tue Aug 18',     time:'11am–12pm PT · 2–3pm ET',       session:'leadership' },
+      { type:'lab',   color:'tg',    name:'Leadership Style Lab',             date:'Thu Aug 20',     time:'9–9:30am PT · 12–12:30pm ET',   session:'leadership' },
+      { type:'oh',    color:'oh',    name:'ART Office Hours',                 date:'Thu Aug 27',     time:'11am–12pm PT · 2–3pm ET',       session:'office-hours' },
+    ]
+  },
+  {
+    halfLabel: 'September — December 2026',
+    months: ['SEP','SEP','SEP','SEP','SEP','OCT','OCT','OCT','OCT','OCT','NOV','NOV','NOV','NOV','NOV','DEC'],
+    nodes: [
+      { type:'ws',    color:'ai',    name:'Build AI Into Your Workflow',      date:'Thu Sep 3',      time:'11am–12pm PT · 2–3pm ET',       session:'build-ai' },
+      { type:'lab',   color:'ai',    name:'Build AI Into Your Workflow Lab',  date:'Fri Sep 11',     time:'9–9:30am PT · 12–12:30pm ET',   session:'build-ai' },
+      { type:'ws',    color:'ai-rs', name:'Cross-Team Workflow Lab 1',        date:'Tue Sep 15',     time:'11am–12pm PT · 2–3pm ET',       session:'ctw1' },
+      { type:'lab',   color:'ai-rs', name:'Cross-Team Workflow Lab 1 Lab',   date:'Fri Sep 18',     time:'9–9:30am PT · 12–12:30pm ET',   session:'ctw1' },
+      { type:'oh',    color:'oh',    name:'ART Office Hours',                 date:'Thu Sep 24',     time:'11am–12pm PT · 2–3pm ET',       session:'office-hours' },
+      { type:'ws',    color:'ai',    name:'Agents 101',                       date:'Thu Oct 1',      time:'11am–12pm PT · 2–3pm ET',       session:'agents' },
+      { type:'lab',   color:'ai',    name:'Agents 101 Lab',                   date:'Fri Oct 16',     time:'9–9:30am PT · 12–12:30pm ET',   session:'agents' },
+      { type:'ws',    color:'ai-rs', name:'Cross-Team Workflow Lab 2',        date:'Tue Oct 20',     time:'11am–12pm PT · 2–3pm ET',       session:'ctw2' },
+      { type:'lab',   color:'ai-rs', name:'Cross-Team Workflow Lab 2 Lab',   date:'Fri Oct 23',     time:'9–9:30am PT · 12–12:30pm ET',   session:'ctw2' },
+      { type:'oh',    color:'oh',    name:'ART Office Hours',                 date:'Thu Oct 29',     time:'11am–12pm PT · 2–3pm ET',       session:'office-hours' },
+      { type:'ws',    color:'tg-rs', name:'Prioritize What Matters',          date:'Thu Nov 5',      time:'11am–12pm PT · 2–3pm ET',       session:'prioritize' },
+      { type:'lab',   color:'tg-rs', name:'Prioritize What Matters Lab',      date:'Fri Nov 13',     time:'9–9:30am PT · 12–12:30pm ET',   session:'prioritize' },
+      { type:'ws',    color:'ai-rs', name:'Cross-Team Workflow Lab 3',        date:'Tue Nov 17',     time:'11am–12pm PT · 2–3pm ET',       session:'ctw3' },
+      { type:'oh',    color:'oh',    name:'ART Office Hours',                 date:'Wed Nov 18',     time:'11am–12pm PT · 2–3pm ET',       session:'office-hours' },
+      { type:'lab',   color:'ai-rs', name:'Cross-Team Workflow Lab 3 Lab',   date:'Fri Nov 20',     time:'9–9:30am PT · 12–12:30pm ET',   session:'ctw3' },
+      { type:'cap',   color:'cap',   name:'ART Celebration Showcase',         date:'Wed Dec 2',      time:'11am–12:30pm PT · 2–3:30pm ET', session:'capstone' },
+    ]
+  }
+];
+
+function getIconBg(color) {
+  if (color === 'kick') return '#1d7279';
+  if (color === 'oh') return '#0db4ab';
+  if (color === 'cap') return '#24282b';
+  if (color === 'ai') return '#ca1c68';
+  if (color === 'rs') return '#1d7279';
+  if (color === 'tg') return '#4c3480';
+  if (color === 'ai-rs') return '#0d6b6e';
+  if (color === 'tg-rs') return '#3a3060';
+  return '#333';
+}
+
+function getIconSvg(type, color) {
+  const c = getIconBg(color);
+  if (type === 'ws' || type === 'kick') {
+    if (type === 'kick') return svgKickoff();
+    return svgWorkshop(c);
+  }
+  if (type === 'lab') return svgLab(c);
+  if (type === 'oh') return svgOH();
+  if (type === 'cap') return svgCapstone();
+  return svgWorkshop(c);
+}
+
+function getNodeBg(color) {
+  if (color === 'ai-rs') return 'linear-gradient(135deg,#1d7279 20%,#ca1c68 100%)';
+  if (color === 'tg-rs') return 'linear-gradient(135deg,#4c3480 20%,#1d7279 100%)';
+  if (color === 'cap')   return 'linear-gradient(135deg,#ca1c68,#1d7279,#4c3480)';
+  return getIconBg(color);
+}
+
+function renderTimeline() {
+  let html = '';
+  tlData.forEach(half => {
+    html += `<div class="tl-half">
+      <div class="tl-half-label">${half.halfLabel}</div>
+      <div class="tl-track">
+        <div class="tl-nodes">`;
+    half.nodes.forEach((node, i) => {
+      const typeLabel = node.type === 'ws' ? 'Workshop' : node.type === 'lab' ? 'Lab' : node.type === 'oh' ? 'Office Hours' : node.type === 'cap' ? 'Capstone' : 'Kickoff';
+      const bg = getNodeBg(node.color);
+      const dotColor = getIconBg(node.color);
+      const iconSvg = getIconSvg(node.type, node.color);
+      const nodeId = `tl-node-${half.halfLabel.substring(0,3)}-${i}`;
+      html += `
+          <div class="tl-node" id="${nodeId}" onclick="tlOpenPopup('${nodeId}')">
+            <div class="tl-node-icon">${iconSvg}</div>
+            <div class="tl-node-dot" style="background:${dotColor};border-color:${dotColor}55"></div>
+            <div class="tl-node-label">${typeLabel}</div>
+            <div class="tl-popup" id="pop-${nodeId}">
+              <button class="tl-popup-close" onclick="tlClosePopup('${nodeId}');event.stopPropagation()">×</button>
+              <div class="tl-popup-name">${node.name}</div>
+              <div class="tl-popup-date">${node.date}</div>
+              <div class="tl-popup-time">${node.time}</div>
+              <button class="tl-popup-btn" onclick="tlGoToMap('${node.session}');event.stopPropagation()">🗺 See on Journey Map</button>
+            </div>
+          </div>`;
+    });
+    html += `</div></div></div>`;
+  });
+
+  // Legend
+  const legendItems = [
+    { type:'kick',  color:'kick',  label:'Kickoff' },
+    { type:'ws',    color:'ai',    label:'Workshop' },
+    { type:'lab',   color:'rs',    label:'Lab' },
+    { type:'oh',    color:'oh',    label:'Office Hours' },
+    { type:'cap',   color:'cap',   label:'Capstone' },
+  ];
+  const legendHtml = legendItems.map(l =>
+    `<div class="tl-leg">${getIconSvg(l.type, l.color)} ${l.label}</div>`
+  ).join('');
+
+  document.getElementById('tl-content').innerHTML = html;
+  document.getElementById('tl-legend').innerHTML = legendHtml;
+}
+
+function tlOpenPopup(nodeId) {
+  // Close all other popups first
+  document.querySelectorAll('.tl-popup.open').forEach(p => p.classList.remove('open'));
+  document.getElementById('pop-' + nodeId).classList.add('open');
+}
+
+function tlClosePopup(nodeId) {
+  document.getElementById('pop-' + nodeId).classList.remove('open');
+}
+
+function tlGoToMap(sessionId) {
+  showScreen('journey');
+  setTimeout(() => {
+    clearHighlights();
+    document.querySelectorAll('.ws-card, .lab-card, .oh-bar').forEach(c => c.classList.add('dim'));
+    const wsId = 'ws-' + sessionId;
+    const el = document.getElementById(wsId);
+    if (el) { el.classList.remove('dim'); el.classList.add('hl-survey'); }
+    const lab = document.getElementById('ws-lab-' + sessionId);
+    if (lab) { lab.classList.remove('dim'); lab.classList.add('hl-survey'); }
+    document.querySelector('.journey-wrap').scrollIntoView({behavior:'smooth', block:'start'});
+  }, 120);
+}
+
+renderTimeline();
+
+// Close timeline popups when clicking outside
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.tl-node')) {
+    document.querySelectorAll('.tl-popup.open').forEach(p => p.classList.remove('open'));
+  }
+});
 // ── CALENDAR DATA ──
 const calMonths = [
   {
@@ -1774,12 +2124,11 @@ function showScreen(s) {
   document.querySelectorAll('.screen').forEach(el => el.classList.remove('active'));
   document.querySelectorAll('.nav-tab').forEach(el => el.classList.remove('active'));
   document.getElementById('screen-' + s).classList.add('active');
-  const idx = {journey:0, insights:1, personas:2, calendar:3}[s];
+  const idx = {journey:0, insights:1, personas:2, calendar:3, timeline:4}[s];
   document.querySelectorAll('.nav-tab')[idx].classList.add('active');
   clearHighlights();
 
-  // Show first-visit overlay for journey and calendar
-  if ((s === 'journey' || s === 'calendar') && !seenScreens.has(s)) {
+  if ((s === 'journey' || s === 'calendar' || s === 'insights') && !seenScreens.has(s)) {
     seenScreens.add(s);
     const overlay = document.getElementById('fv-' + s);
     if (overlay) overlay.classList.remove('hidden');
@@ -2246,25 +2595,27 @@ const personas = {
     goal:'Your 30-day goal: Use AI to draft or summarize one recurring task. Reinvest the saved time into strengthening analysis, stakeholder relationships, or decision framing. Notice what opens up.',
     sessions:[
       {id:'ws-ai-conv', l:'Engaging in AI Conversations', t:'ai',
-       why:'This session was designed for you first. It creates the psychological safety to name out loud what AI means for your role — without judgment. You\'ll leave with language for the conversation you\'ve been carrying silently.'},
+       why:'Some things are irreducibly human — judgment, relationships, meaning, craft. This session gives you the language to say that out loud, in a room where people are still figuring out what AI can and can\'t do. You don\'t have to defend yourself. You just have to show up with what you know.'},
       {id:'ws-ai-essentials', l:'AI Essentials + Know Your Tools', t:'ai',
-       why:'The most powerful move for an Identity Defender is understanding exactly which tasks AI absorbs — and which it cannot touch. This session separates task from value in real time. You\'ll complete one real work task with AI and discover that your judgment is still the part that matters most.'},
+       why:'Before you can know what AI can\'t replace, you need to know what it actually does. This session walks you through the real tools, what they\'re capable of, and where they fall short — so your confidence in what you bring isn\'t based on fear of the unknown. It\'s based on knowing exactly what you\'re working with.'},
       {id:'ws-review-ai', l:'Reviewing AI Outputs', t:'ai',
-       why:'This is the session that validates everything you\'ve been feeling. AI generates — you determine whether it\'s good enough. Your ability to evaluate, critique, and elevate AI output is not a soft skill. It\'s the critical capability that makes everything else trustworthy.'},
+       why:'This is the session that validates everything you\'ve been feeling. AI generates — you determine whether it\'s good enough. Knowing how to evaluate, critique, elevate, and manage AI output isn\'t a soft skill. It\'s the critical capability that makes everything trustworthy — and it\'s irreplaceable.'},
       {id:'ws-map-workflow', l:'Map & Simplify a Workflow', t:'rs',
-       why:'Understanding which parts of your workflow are mechanical versus meaningful is the foundation of protecting your value. This session makes that distinction concrete — and visible.'},
+       why:'Every workflow has steps that are ready to be simplified — and steps that need exactly what you bring. This session gives you the space to look at your own work honestly, map what each step actually requires, and find where your judgment matters most. That clarity is the foundation everything else builds on.'},
       {id:'ws-nav-change', l:'Navigating Change', t:'tg',
-       why:'When role identity is shifting, you need a framework for naming your strategic contribution independent of org structure. This session gives you exactly that — including time to articulate what you bring that no workflow can replicate.'},
+       why:'When the world shifts and the company shifts with it, it can feel like the ground under you is moving too. This session helps you understand your own relationship to change — the patterns you fall into, the strengths you carry through it, and how to stay grounded in who you are while still moving forward.'},
       {id:'ws-leadership', l:'Leadership Style', t:'tg',
        why:'Your expertise doesn\'t disappear in an AI era — it moves higher. This session helps you articulate what operating at the next level looks like for you: influencing up, leading without authority, bringing others along.'},
       {id:'ws-build-ai', l:'Build AI Into Your Workflow', t:'ai',
        why:'This is where you get to decide which steps AI handles and which stay human. An Identity Defender who designs their own AI integration builds something grounded in their own values — it meets your standard because you set it.'},
       {id:'ws-ctw1', l:'Cross-Team Workflow Lab', t:'rs',
        why:'When you work alongside people from other functions, your depth and institutional knowledge become visible in a new way. This lab gives you the chance to contribute what only you can contribute — and have others see it clearly.'},
+      {id:'ws-agents', l:'Agents 101', t:'ai',
+       why:'This session isn\'t asking you to build an agent. It\'s asking you to understand what one is — so you\'re the person in the room who knows what\'s actually happening, where the judgment lives, and what the limits are.'},
       {id:'ws-prioritize', l:'Prioritize What Matters', t:'tg',
        why:'When you\'re protecting meaningful work, you also need to protect the time and energy to do it. This session helps you cut through the noise and defend what actually deserves your expertise.'},
       {id:'ws-capstone', l:'ART Celebration Showcase', t:'co',
-       why:'This is where your journey becomes visible to others. Sharing what you built — and what changed for you — is an act of courage. It also gives permission to others who are still figuring out where they fit in an AI era.'},
+       why:'This is where the year becomes visible. Sharing what you built, what shifted, and what you now know — that\'s not just reflection. It\'s a gift to everyone in the room who did the same hard work alongside you.'},
     ],
   },
   skeptic: {
@@ -2274,15 +2625,15 @@ const personas = {
     goal:'Your 30-day goal: Identify one process where AI reduces repetitive workload while maintaining human oversight for judgment and ethics. Optionally: draft a Responsible Use Checklist for your function.',
     sessions:[
       {id:'ws-ai-conv', l:'Engaging in AI Conversations', t:'ai',
-       why:'This session surfaces the conversations that responsible AI adoption actually requires — the ones most teams skip because they\'re uncomfortable. The goal isn\'t consensus; it\'s a shared vocabulary for honest, ongoing dialogue about AI in this team.'},
+       why:'This session surfaces the conversations that responsible AI adoption actually requires — the ones most teams skip because they\'re uncomfortable. You\'ll find others in the room share your concerns. The goal is a shared vocabulary for honest, ongoing dialogue about AI in this team.'},
       {id:'ws-ai-essentials', l:'AI Essentials + Know Your Tools', t:'ai',
-       why:'Understanding the tools, their limitations, and what data they touch is exactly what a Responsible Skeptic needs before evaluating anything. This session gives you the foundation to ask better, sharper questions — from a grounded place, not a reactive one.'},
+       why:'Before you can evaluate anything responsibly, you need to know what you\'re actually evaluating. This session gives you a clear picture of what\'s available and how each tool works — and that understanding only sharpens the questions you were already asking.'},
       {id:'ws-review-ai', l:'Reviewing AI Outputs', t:'ai',
-       why:'This is your session. It\'s built around exactly the question you\'ve been asking: how do we know this output is trustworthy? You\'ll build a personal review checklist, practice identifying hallucinations and bias, and establish when human oversight is non-negotiable.'},
+       why:'This session gives you a practical process for reviewing AI outputs, understanding where AI gets it wrong, and knowing when human oversight is non-negotiable. Your rigor makes the whole team\'s work better.'},
       {id:'ws-map-workflow', l:'Map & Simplify a Workflow', t:'rs',
        why:'Responsible AI integration starts with understanding the process before the technology. This session maps real work — identifying friction points and simplification opportunities before introducing any AI. That\'s the design integrity you\'ve been asking for.'},
       {id:'ws-nav-change', l:'Navigating Change', t:'tg',
-       why:'Your skepticism is often sharpest when change is moving faster than the guardrails. This session gives you a framework for what you can influence — and how to raise the important questions without being dismissed as resistant.'},
+       why:'When change moves fast, the questions you raise matter most. This session gives you a framework for what you can influence — and how to stay grounded in your values while still moving forward with your team.'},
       {id:'ws-build-ai', l:'Build AI Into Your Workflow', t:'ai',
        why:'This is where your accountability lens is most valuable. As you design your own AI integration, you\'re the person in the room asking: what are we not thinking about? What could go wrong? That makes everyone\'s integration better.'},
       {id:'ws-ctw1', l:'Cross-Team Workflow Lab', t:'rs',
@@ -2290,7 +2641,7 @@ const personas = {
       {id:'ws-prioritize', l:'Prioritize What Matters', t:'tg',
        why:'A Responsible Skeptic carries a lot — the weight of the questions, the concerns others aren\'t raising. This session helps you protect your own energy so you can keep showing up with the rigor this team needs.'},
       {id:'ws-capstone', l:'ART Celebration Showcase', t:'co',
-       why:'Your journey through this year will likely include moments of real shift — where the evidence changed your mind, or where you found the responsible path forward. Sharing that openly is one of the most valuable things you can contribute to this community.'},
+       why:'This is where the year becomes visible. What you learned, what you questioned, and what you now stand behind — sharing that honestly is one of the most valuable things you can contribute to this community.'},
     ],
   },
   purist: {
@@ -2302,19 +2653,19 @@ const personas = {
       {id:'ws-ai-essentials', l:'AI Essentials + Know Your Tools', t:'ai',
        why:'The Skill Purist\'s advantage in this session is knowing exactly what to look for. Where does AI fall short on nuance? Where does it flatten craft? You\'ll come out with a clear-eyed understanding of what AI can generate — and a sharper sense of where your expertise is irreplaceable.'},
       {id:'ws-review-ai', l:'Reviewing AI Outputs', t:'ai',
-       why:'This session was built for you. You evaluate, critique, and elevate — AI generates options. The session explicitly positions your judgment as the quality gate, not a rubber stamp. You\'ll build a personal checklist for what excellent AI-assisted work looks like by your standards.'},
+       why:'This session was built for you. You evaluate, critique, and elevate — AI generates options. Your judgment is both the quality gate and the guardrail. You\'ll build a personal process for what excellent, responsible AI-assisted work looks like by your standards.'},
       {id:'ws-map-workflow', l:'Map & Simplify a Workflow', t:'rs',
        why:'Before you integrate AI into anything, you want to understand the process deeply. This session gives you that foundation — mapping what\'s actually happening before any technology enters the picture.'},
       {id:'ws-nav-change', l:'Navigating Change', t:'tg',
-       why:'Change that threatens craft is worth naming clearly. This session helps you understand your own relationship to what\'s shifting — and find the language to advocate for quality in the middle of it.'},
+       why:'When everything around you is shifting, the commitment to craft is what stays constant. This session helps you understand your own relationship to change — and find the language to keep quality at the center of the conversation.'},
       {id:'ws-build-ai', l:'Build AI Into Your Workflow', t:'ai',
        why:'The most important design question in this session is: where do YOU stay? You map one real workflow and decide which steps AI handles — and which stay human. A Skill Purist who designs their own integration builds something that meets their own standard.'},
       {id:'ws-leadership', l:'Leadership Style', t:'tg',
-       why:'Your standards don\'t just protect your own work — they set the bar for your team. This session gives you the framework to make that influence explicit: how to operate at the next level and bring your craft discipline into how you lead.'},
+       why:'Your standards don\'t just protect your own work — they set the bar. This session gives you the framework to make that influence explicit: how to operate at the next level, how to influence without authority, how to bring your craft discipline into how you lead.'},
       {id:'ws-ctw1', l:'Cross-Team Workflow Lab', t:'rs',
        why:'In a mixed-function room, quality standards often erode under pressure to move fast. Your presence raises the floor. When you ask "is this actually good?" out loud, other people feel permission to ask the same. That\'s not resistance — that\'s the team getting better.'},
       {id:'ws-agents', l:'Agents 101', t:'ai',
-       why:'If you\'re going to understand where AI is heading, this session is where it gets real. Understanding what an agent is — and what it can\'t do — gives you a more sophisticated basis for your craft concerns.'},
+       why:'Building and managing an agent is a skill — and like any skill, it rewards the people who take it seriously. Think of AI as an eager, capable new hire that needs expert direction and real oversight. If you understand how it works and where its limits are, you become the strongest person in the room to manage it well.'},
       {id:'ws-prioritize', l:'Prioritize What Matters', t:'tg',
        why:'Protecting time for deep, quality work requires active prioritization. This session helps you build the structure to defend the kind of work you care about most.'},
       {id:'ws-capstone', l:'ART Celebration Showcase', t:'co',
@@ -2328,7 +2679,7 @@ const personas = {
     goal:'Your 30-day goal: Use AI to draft or summarize one recurring email, report, or meeting recap this week. One task. This week. Then notice what that freed up.',
     sessions:[
       {id:'ws-ai-conv', l:'Engaging in AI Conversations', t:'ai',
-       why:'If your team is feeling AI pressure, you\'re probably absorbing some of that too. This session gives you the language to have honest conversations about it — and the confidence to lead without adding more anxiety to the room.'},
+       why:'When you\'re already stretched thin, adding an AI conversation to the list can feel like one more thing. This session gives you the language to say what you actually need — more time, clearer expectations, honest dialogue — so the team can move forward together without anyone pretending they\'re fine.'},
       {id:'ws-ai-essentials', l:'AI Essentials + Know Your Tools', t:'ai',
        why:'This session\'s design principle is: one task, in your hands, before the session ends. Not a lecture. Not more to read. You leave with one thing you can use this week that takes less time than the old way. That\'s the entire ask.'},
       {id:'ws-map-workflow', l:'Map & Simplify a Workflow', t:'rs',
@@ -2337,12 +2688,14 @@ const personas = {
        why:'Overwhelm is often compounded by ambiguity about what\'s actually being asked of you. This session helps you separate what you can control from what you can\'t — and that clarity alone reduces the weight.'},
       {id:'ws-review-ai', l:'Reviewing AI Outputs', t:'ai',
        why:'Once you start using AI, this session protects you from the risk of moving too fast. It gives you a simple, practical framework for knowing when AI output is good enough to use — saving time without sacrificing quality.'},
+      {id:'ws-leadership', l:'Leadership Style', t:'tg',
+       why:'When you\'re overwhelmed, you\'re often leading without clarity \u2014 absorbing ambiguity so others don\'t have to. This session helps you name your leadership style and identify one concrete shift that makes the load lighter, not just for you but for the people around you.'},
       {id:'ws-build-ai', l:'Build AI Into Your Workflow', t:'ai',
        why:'This is the session that can actually give you time back. You\'ll take one real workflow and integrate AI into it — not in theory, but in the session. The goal is a concrete change that makes your week lighter.'},
       {id:'ws-ctw1', l:'Cross-Team Workflow Lab', t:'rs',
        why:'Some of what\'s overwhelming you is friction that lives between teams, not within your own work. This lab addresses the shared processes that are draining everyone — and gives you dedicated time with the right people in the room to actually fix it.'},
       {id:'ws-prioritize', l:'Prioritize What Matters', t:'tg',
-       why:'This session was designed for November — peak EOY pressure — because that\'s when you need it most. You\'ll leave with an action plan to prioritize your work starting right away, not someday.'},
+       why:'This session was designed for November — peak EOY pressure. You\'ll leave with an action plan to prioritize your work starting right away, not someday.'},
     ],
   },
   accelerator: {
@@ -2358,9 +2711,9 @@ const personas = {
       {id:'ws-map-workflow', l:'Map & Simplify a Workflow', t:'rs',
        why:'Before you automate, map. Even Accelerators benefit from slowing down long enough to understand a process fully — it makes the AI integration you build afterward far more durable.'},
       {id:'ws-review-ai', l:'Reviewing AI Outputs', t:'ai',
-       why:'Speed without quality is fragile. This session builds the review framework that makes your speed sustainable — so when you share a workflow with the team, the output stands up to scrutiny.'},
+       why:'Speed without quality is fragile. This session builds the review framework that makes speed sustainable — so when you share what you\'ve built with the team, the output stands up to scrutiny.'},
       {id:'ws-nav-change', l:'Navigating Change', t:'tg',
-       why:'Your impatience with the pace of change is data. This session helps you understand your own relationship to change — including what it\'s like for people who aren\'t moving at your speed. That empathy makes you a better leader.'},
+       why:'You thrive in change — but not everyone on your team does. This session helps you understand your own relationship to change and what it feels like for people moving at a different pace. That awareness is what turns momentum into leadership.'},
       {id:'ws-build-ai', l:'Build AI Into Your Workflow', t:'ai',
        why:'This is where your energy belongs. You\'ll build a real AI integration in the session — and the structure asks you to document it well enough that a colleague could replicate it. That\'s the highest-leverage move: turning your experiment into team capability.'},
       {id:'ws-leadership', l:'Leadership Style', t:'tg',
@@ -2368,11 +2721,11 @@ const personas = {
       {id:'ws-ctw1', l:'Cross-Team Workflow Lab', t:'rs',
        why:'Your biggest leverage in this session is not what you build — it\'s who you bring with you. The Accelerator\'s role in a cross-team lab is to make the possible feel accessible for people earlier in the journey. You don\'t lead from the front here. You lead from alongside.'},
       {id:'ws-agents', l:'Agents 101', t:'ai',
-       why:'You\'ve been waiting for this one. If you\'ve hit the ceiling of what single-step AI can do and you\'re ready to build pipelines — this is the next level. Four people in the survey explicitly named agent-building. You\'re probably one of them.'},
+       why:'You don\'t have time to experiment your way into understanding AI agents — and you shouldn\'t have to. This session gives you exactly enough to know what agents can take off your plate, so you can make a clear-eyed decision about whether it\'s worth your time. One hour. Real answers.'},
       {id:'ws-prioritize', l:'Prioritize What Matters', t:'tg',
-       why:'Even Accelerators burn out. This session helps you protect the energy that fuels your momentum — so you\'re still moving fast in December, not just in June.'},
+       why:'Even Accelerators burn out. This session helps you protect the energy that fuels your momentum — so the pace you set is one you can actually sustain.'},
       {id:'ws-capstone', l:'ART Celebration Showcase', t:'co',
-       why:'This is your moment to show what a year of real experimentation produces. What you share here becomes the social proof that makes every hesitant colleague believe change is possible. That impact is worth more than any individual workflow.'},
+       why:'You showed up, did the work, and made something lighter. This session is where that becomes visible — not as a presentation, but as proof that it was worth it.'},
     ],
   },
 };
