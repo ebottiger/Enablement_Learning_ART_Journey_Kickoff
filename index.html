@@ -96,7 +96,6 @@ body {
   font-size: 13px;
   line-height: 1.7;
   color: rgba(255,255,255,0.8);
-  font-style: italic;
   max-width: 600px;
 }
 
@@ -779,7 +778,7 @@ body {
 .cal-wrap { max-width: 900px; margin: 0 auto; padding: 36px 36px 80px; }
 .cal-intro { margin-bottom: 28px; }
 .cal-intro h1 { font-size: 24px; font-weight: 700; color: white; margin-bottom: 6px; }
-.cal-intro p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+.cal-intro p { font-size: 13px; color: rgba(255,255,255,0.8); line-height: 1.7; }
 
 .cal-nav-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
 .cal-month-title { font-size: 20px; font-weight: 700; color: white; }
@@ -831,7 +830,7 @@ body {
 .ce-lab-ai-tg .cal-event-time, .ce-lab-ai-rs .cal-event-time, .ce-lab-tg-rs .cal-event-time { color: rgba(255,255,255,0.6); }
 
 .cal-legend { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 20px; padding: 12px 16px; background: rgba(255,255,255,0.04); border-radius: 8px; }
-.cal-leg { display: flex; align-items: center; gap: 6px; font-size: 11px; color: rgba(255,255,255,0.5); }
+.cal-leg { display: flex; align-items: center; gap: 6px; font-size: 11px; color: rgba(255,255,255,0.8); }
 .cal-leg-dot { width: 10px; height: 10px; border-radius: 3px; flex-shrink: 0; }
 
 /* ══════════════════════════════════
@@ -840,7 +839,7 @@ body {
 .tl-wrap { max-width: 1100px; margin: 0 auto; padding: 36px 36px 80px; }
 .tl-intro { margin-bottom: 32px; }
 .tl-intro h1 { font-size: 24px; font-weight: 700; color: white; margin-bottom: 6px; }
-.tl-intro p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+.tl-intro p { font-size: 13px; color: rgba(255,255,255,0.8); line-height: 1.7; }
 
 .tl-half { margin-bottom: 56px; }
 .tl-half-label {
@@ -924,8 +923,8 @@ body {
   font-size: 14px; cursor: pointer; padding: 2px 5px; line-height: 1;
 }
 
-.tl-legend { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 8px; padding: 12px 16px; background: rgba(255,255,255,0.04); border-radius: 8px; }
-.tl-leg { display: flex; align-items: center; gap: 8px; font-size: 11px; color: rgba(255,255,255,0.5); }
+.tl-legend { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 20px; margin-bottom: 32px; padding: 12px 16px; background: rgba(255,255,255,0.04); border-radius: 8px; }
+.tl-leg { display: flex; align-items: center; gap: 8px; font-size: 11px; color: rgba(255,255,255,0.8); }
 .tl-leg svg { width: 22px; height: 22px; filter: drop-shadow(0 1px 3px rgba(0,0,0,0.3)); }
 
 .copyright { padding: 16px 36px; font-size: 10px; color: rgba(255,255,255,0.15); letter-spacing: 0.5px; }
@@ -1611,10 +1610,13 @@ body {
   <div class="tl-wrap">
     <div class="tl-intro">
       <h1>ART Journey Timeline</h1>
-      <p>Every session in chronological order. Hover any node to see the date and times. Click "See on Journey Map" to navigate directly to that workshop.</p>
+      <p>Every session below in chronological order.<br>
+      Click on any icon to see the session title, date and times. Click "See on Journey Map" to navigate directly to that session.<br>
+      Keep in mind all sessions have a live workshop to join and an asynchronous version.<br>
+      The Labs post workshop are for more hands-on time practicing the skills from the recent workshop and are optional to attend.</p>
     </div>
-    <div id="tl-content"></div>
     <div class="tl-legend" id="tl-legend"></div>
+    <div id="tl-content"></div>
   </div>
   <div class="copyright">Copyright © 2026 BTS</div>
 </div>
