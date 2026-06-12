@@ -1103,7 +1103,7 @@ body {
           <div class="ws-lab-arrow-icon" style="background:rgba(202,28,104,0.25);color:rgba(202,28,104,0.9)">→</div>
         </div>
         <div class="lab-card w-ai" id="ws-lab-ai-essentials" onclick="openSession('ai-essentials')">
-          <div class="lab-badge">Lab · Jun 17 · 30 min</div>
+          <div class="lab-badge">Lab · Jun 24 · 30 min</div>
           <div class="lab-name">AI Essentials + Know Your Tools Lab</div>
           <div class="lab-note">Prior to attending, join live workshop or complete async version</div>
         </div>
@@ -1358,7 +1358,7 @@ body {
           <div class="ws-lab-arrow-icon" style="background:rgba(29,100,100,0.25);color:rgba(29,114,121,0.9)">→</div>
         </div>
         <div class="lab-card w-ai-rs" id="ws-lab-ctw3" onclick="openSession('ctw3')">
-          <div class="lab-badge">Lab · Nov 20 · 30 min</div>
+          <div class="lab-badge">Lab · Nov 18 · 30 min</div>
           <div class="lab-name">Cross-Team Workflow Lab 3 Continued</div>
           <div class="lab-note">Prior to attending, join live workshop or complete async version</div>
         </div>
@@ -1781,9 +1781,9 @@ const tlData = [
       { type:'ws',    color:'ai',    name:'Engaging in AI Conversations',     date:'Thu Jun 4',      time:'11am–12pm PT · 2–3pm ET',       session:'ai-conv' },
       { type:'lab',   color:'ai',    name:'Engaging in AI Conversations Lab', date:'Thu Jun 11',     time:'9–9:30am PT · 12–12:30pm ET',   session:'ai-conv' },
       { type:'ws',    color:'ai',    name:'AI Essentials + Know Your Tools',  date:'Tue Jun 16',     time:'11am–12pm PT · 2–3pm ET',       session:'ai-essentials' },
-      { type:'lab',   color:'ai',    name:'AI Essentials Lab',                date:'Wed Jun 17',     time:'9–9:30am PT · 12–12:30pm ET',   session:'ai-essentials' },
+      { type:'lab',   color:'ai',    name:'AI Essentials Lab',                date:'Wed Jun 24',     time:'12–12:30pm PT · 3–3:30pm ET',   session:'ai-essentials' },
       { type:'oh',    color:'oh',    name:'ART Office Hours',                 date:'Tue Jun 23',     time:'11am–12pm PT · 2–3pm ET',       session:'oh-jun' },
-      { type:'ws',    color:'rs',    name:'Map & Simplify a Workflow',        date:'Thu Jul 9',      time:'11am–12pm PT · 2–3pm ET',       session:'map-workflow' },
+      { type:'ws',    color:'rs',    name:'Map & Simplify a Workflow',        date:'Thu Jul 9',      time:'10–11am PT · 1–2pm ET',         session:'map-workflow' },
       { type:'lab',   color:'rs',    name:'Map & Simplify a Workflow Lab',    date:'Thu Jul 16',     time:'9–9:30am PT · 12–12:30pm ET',   session:'map-workflow' },
       { type:'oh',    color:'oh',    name:'ART Office Hours',                 date:'Thu Jul 23',     time:'11am–12pm PT · 2–3pm ET',       session:'oh-jul' },
       { type:'ws',    color:'tg',    name:'Navigating Change',                date:'Tue Jul 28',     time:'11am–12pm PT · 2–3pm ET',       session:'nav-change' },
@@ -1813,7 +1813,7 @@ const tlData = [
       { type:'lab',   color:'tg-rs', name:'Prioritize What Matters Lab',      date:'Fri Nov 13',     time:'9–9:30am PT · 12–12:30pm ET',   session:'prioritize' },
       { type:'ws',    color:'ai-rs', name:'Cross-Team Workflow Lab 3',        date:'Tue Nov 17',     time:'11am–12pm PT · 2–3pm ET',       session:'ctw3' },
       { type:'oh',    color:'oh',    name:'ART Office Hours',                 date:'Wed Nov 18',     time:'11am–12pm PT · 2–3pm ET',       session:'oh-nov' },
-      { type:'lab',   color:'ai-rs', name:'Cross-Team Workflow Lab 3 Continued',   date:'Fri Nov 20',     time:'9–9:30am PT · 12–12:30pm ET',   session:'ctw3' },
+      { type:'lab',   color:'ai-rs', name:'Cross-Team Workflow Lab 3 Continued',   date:'Tue Nov 18',     time:'11–11:30am PT · 2–2:30pm ET',   session:'ctw3' },
       { type:'cap',   color:'cap',   name:'ART Celebration Showcase',         date:'Wed Dec 2',      time:'11am–12:30pm PT · 2–3:30pm ET', session:'capstone' },
     ]
   }
@@ -2072,13 +2072,14 @@ const calMonths = [
       { label: 'Jun 15–19', days: [
         { d: 15 },
         { d: 16, events: [{ name: 'AI Essentials + Know Your Tools', time: '11am–12pm PT · 2–3pm ET', color: 'ce-ai', session: 'ai-essentials' }] },
-        { d: 17, events: [{ name: 'Lab · AI Essentials + Know Your Tools', time: '9–9:30am PT · 12–12:30pm ET', color: 'ce-lab-ai', session: 'ai-essentials' }] },
+        { d: 17 },
         { d: 18 },
         { d: 19, hol: 'Juneteenth (USA)' },
       ]},
       { label: 'Jun 22–26', days: [
         { d: 22 }, { d: 23, events: [{ name: 'ART Office Hours', time: '11am–12pm PT · 2–3pm ET', color: 'ce-oh', session: 'office-hours' }] },
-        { d: 24 }, { d: 25 }, { d: 26 },
+        { d: 24, events: [{ name: 'Lab · AI Essentials + Know Your Tools', time: '12–12:30pm PT · 3–3:30pm ET', color: 'ce-lab-ai', session: 'ai-essentials' }] },
+        { d: 25 }, { d: 26 },
       ]},
       { label: 'Jun 29–30', days: [
         { d: 29 }, { d: 30 },
@@ -2095,7 +2096,7 @@ const calMonths = [
       ]},
       { label: 'Jul 6–10',  days: [
         { d: 6 }, { d: 7 }, { d: 8 },
-        { d: 9, events: [{ name: 'Map & Simplify a Workflow', time: '11am–12pm PT · 2–3pm ET', color: 'ce-rs', session: 'map-workflow' }] },
+        { d: 9, events: [{ name: 'Map & Simplify a Workflow', time: '10–11am PT · 1–2pm ET', color: 'ce-rs', session: 'map-workflow' }] },
         { d: 10 },
       ]},
       { label: 'Jul 13–17', days: [
@@ -2225,7 +2226,7 @@ const calMonths = [
       { label: 'Nov 16–20', days: [
         { d: 16 },
         { d: 17, events: [{ name: 'Cross-Team Workflow Lab 3', time: '11am–12pm PT · 2–3pm ET', color: 'ce-ai-rs', session: 'ctw3' }] },
-        { d: 18, events: [{ name: 'Lab · Cross-Team Workflow Lab 3 Continued', time: '11am–12pm PT · 2–3pm ET', color: 'ce-lab-ai-rs', session: 'ctw3' }] },
+        { d: 18, events: [{ name: 'Lab · Cross-Team Workflow Lab 3 Continued', time: '11–11:30am PT · 2–2:30pm ET', color: 'ce-lab-ai-rs', session: 'ctw3' }] },
         { d: 19 },
         { d: 20, events: [{ name: 'ART Office Hours', time: '9–9:30am PT · 12–12:30pm ET', color: 'ce-oh', session: 'office-hours' }] },
       ]},
