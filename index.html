@@ -170,6 +170,24 @@ body {
   margin-left: 42px;
   margin-bottom: 6px;
 }
+/* CTW solo row - full width centered, same width as workshop card */
+.ctw-solo-row {
+  margin-left: 42px;
+  margin-bottom: 6px;
+  display: flex;
+  justify-content: center;
+}
+.ctw-solo-row .ws-card { width: 66.666%; }
+/* Agents 101 Coming Q1 banner */
+.agents-banner {
+  margin-left: 42px; margin-top: 20px;
+  border: 2px dashed rgba(202,28,104,0.4);
+  border-radius: 9px; padding: 14px 18px;
+  background: rgba(202,28,104,0.06);
+}
+.agents-banner-label { font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #ca1c68; margin-bottom: 4px; }
+.agents-banner-title { font-size: 15px; font-weight: 700; color: white; margin-bottom: 5px; }
+.agents-banner-desc { font-size: 11px; color: rgba(255,255,255,0.6); line-height: 1.5; }
 .ws-lab-arrow {
   display: flex; align-items: center; justify-content: center;
   padding: 0 7px; flex-shrink: 0;
@@ -1194,22 +1212,7 @@ body {
           <div class="lab-note">Prior to attending, join live workshop or complete async version</div>
         </div>
       </div>
-      <div class="ws-lab-row">
-        <div class="ws-card w-tg" id="ws-leadership" onclick="openSession('leadership')">
-          <div class="ws-half">Workshop · #7 · Aug 18 · 60 min</div>
-          <div class="ws-name">Leadership Style</div>
-          <div class="ws-meta">Talent Growth</div>
-          <div class="ws-async-line">📹 Available async on Momenta — day after workshop</div>
-        </div>
-        <div class="ws-lab-arrow">
-          <div class="ws-lab-arrow-icon" style="background:rgba(76,52,128,0.25);color:rgba(76,52,128,0.9)">→</div>
-        </div>
-        <div class="lab-card w-tg" id="ws-lab-leadership" onclick="openSession('leadership')">
-          <div class="lab-badge">Lab · Aug 20 · 30 min</div>
-          <div class="lab-name">Leadership Style Lab</div>
-          <div class="lab-note">Prior to attending, join live workshop or complete async version</div>
-        </div>
-      </div>
+
       <div class="oh-bar" id="oh-bar-aug" onclick="openSession('office-hours')">
         <div class="oh-bar-label">Monthly</div>
         <div class="oh-bar-dot"></div>
@@ -1245,20 +1248,12 @@ body {
           <div class="lab-note">Prior to attending, join live workshop or complete async version</div>
         </div>
       </div>
-      <div class="ws-lab-row">
+      <div class="ctw-solo-row">
         <div class="ws-card w-ai-rs" id="ws-ctw1" onclick="openSession('ctw1')">
           <div class="ws-half">Workshop · #9 · Sep 15 · 60 min</div>
           <div class="ws-name">Cross-Team Workflow Lab 1</div>
           <div class="ws-meta">Run Simple + AI · Role-mixed</div>
           <div class="ws-async-line">📹 Available async on Momenta — day after workshop</div>
-        </div>
-        <div class="ws-lab-arrow">
-          <div class="ws-lab-arrow-icon" style="background:rgba(29,100,100,0.25);color:rgba(29,114,121,0.9)">→</div>
-        </div>
-        <div class="lab-card w-ai-rs" id="ws-lab-ctw1" onclick="openSession('ctw1')">
-          <div class="lab-badge">Lab · Sep 18 · 30 min</div>
-          <div class="lab-name">Cross-Team Workflow Lab 1 Continued</div>
-          <div class="lab-note">Prior to attending, join live workshop or complete async version</div>
         </div>
       </div>
       <div class="oh-bar" id="oh-bar-sep" onclick="openSession('office-hours')">
@@ -1281,35 +1276,27 @@ body {
         <div class="month-tag">Month Five · Automate & AI</div>
       </div>
       <div class="ws-lab-row">
-        <div class="ws-card w-ai" id="ws-agents" onclick="openSession('agents')">
+        <div class="ws-card w-tg" id="ws-leadership" onclick="openSession('leadership')">
           <div class="ws-half">Workshop · #10 · Oct 1 · 60 min</div>
-          <div class="ws-name">Agents 101</div>
-          <div class="ws-meta">AI Leadership</div>
+          <div class="ws-name">Leadership Style</div>
+          <div class="ws-meta">Talent Growth</div>
           <div class="ws-async-line">📹 Available async on Momenta — day after workshop</div>
         </div>
         <div class="ws-lab-arrow">
-          <div class="ws-lab-arrow-icon" style="background:rgba(202,28,104,0.25);color:rgba(202,28,104,0.9)">→</div>
+          <div class="ws-lab-arrow-icon" style="background:rgba(76,52,128,0.25);color:rgba(76,52,128,0.9)">→</div>
         </div>
-        <div class="lab-card w-ai" id="ws-lab-agents" onclick="openSession('agents')">
+        <div class="lab-card w-tg" id="ws-lab-leadership" onclick="openSession('leadership')">
           <div class="lab-badge">Lab · Oct 16 · 30 min</div>
-          <div class="lab-name">Agents 101 Lab</div>
+          <div class="lab-name">Leadership Style Lab</div>
           <div class="lab-note">Prior to attending, join live workshop or complete async version</div>
         </div>
       </div>
-      <div class="ws-lab-row">
+      <div class="ctw-solo-row">
         <div class="ws-card w-ai-rs" id="ws-ctw2" onclick="openSession('ctw2')">
           <div class="ws-half">Workshop · #11 · Oct 20 · 60 min</div>
           <div class="ws-name">Cross-Team Workflow Lab 2</div>
           <div class="ws-meta">Run Simple + AI · Role-mixed</div>
           <div class="ws-async-line">📹 Available async on Momenta — day after workshop</div>
-        </div>
-        <div class="ws-lab-arrow">
-          <div class="ws-lab-arrow-icon" style="background:rgba(29,100,100,0.25);color:rgba(29,114,121,0.9)">→</div>
-        </div>
-        <div class="lab-card w-ai-rs" id="ws-lab-ctw2" onclick="openSession('ctw2')">
-          <div class="lab-badge">Lab · Oct 23 · 30 min</div>
-          <div class="lab-name">Cross-Team Workflow Lab 2 Continued</div>
-          <div class="lab-note">Prior to attending, join live workshop or complete async version</div>
         </div>
       </div>
       <div class="oh-bar" id="oh-bar-oct" onclick="openSession('office-hours')">
@@ -1347,20 +1334,12 @@ body {
           <div class="lab-note">Prior to attending, join live workshop or complete async version</div>
         </div>
       </div>
-      <div class="ws-lab-row">
+      <div class="ctw-solo-row">
         <div class="ws-card w-ai-rs" id="ws-ctw3" onclick="openSession('ctw3')">
           <div class="ws-half">Workshop · #13 · Nov 17 · 60 min</div>
           <div class="ws-name">Cross-Team Workflow Lab 3</div>
           <div class="ws-meta">Run Simple + AI · Role-mixed</div>
           <div class="ws-async-line">📹 Available async on Momenta — day after workshop</div>
-        </div>
-        <div class="ws-lab-arrow">
-          <div class="ws-lab-arrow-icon" style="background:rgba(29,100,100,0.25);color:rgba(29,114,121,0.9)">→</div>
-        </div>
-        <div class="lab-card w-ai-rs" id="ws-lab-ctw3" onclick="openSession('ctw3')">
-          <div class="lab-badge">Lab · Nov 18 · 30 min</div>
-          <div class="lab-name">Cross-Team Workflow Lab 3 Continued</div>
-          <div class="lab-note">Prior to attending, join live workshop or complete async version</div>
         </div>
       </div>
       <div class="oh-bar" id="oh-bar-nov" onclick="openSession('office-hours')">
@@ -1393,6 +1372,15 @@ body {
     </div>
 
   </div><!-- /journey-wrap -->
+
+  <div class="agents-banner" style="max-width:860px;margin:20px auto 0;margin-left:auto;margin-right:auto;">
+    <div>
+      <div class="agents-banner-label">⏳ Coming Q1 2027</div>
+      <div class="agents-banner-title">Agents 101</div>
+      <div class="agents-banner-desc">Agents are already here. This session gives you a clear picture of what they actually are, how they work, and where the gaps are — so your perspective is grounded in what's real. Building and managing an agent is a skill, and like any skill, it rewards the people who take it seriously.</div>
+    </div>
+  </div>
+
   <div class="copyright">Copyright © 2026 BTS</div>
 </div>
 
@@ -1429,12 +1417,12 @@ body {
           <div class="bar-chart">
             <div class="bar-row" onclick="connectMapSingle(['ws-build-ai'], 'Build AI Into Your Workflow was your #1 requested session — 67% of you chose it. Click the highlighted workshop on the map to see exactly how your request shaped its design.')"><div class="bar-lbl">Build AI Into Your Workflow</div><div class="bar-track"><div class="bar-fill" style="width:67%;background:var(--bts-magenta)"><span class="bar-pct">67%</span></div></div></div>
             <div class="bar-row" onclick="connectMapSingle(['ws-map-workflow'], 'Find & Fix Inefficiencies became Map & Simplify a Workflow — because you can\'t fix what you haven\'t mapped yet. 60% of you asked for this.')"><div class="bar-lbl">Find & Fix Inefficiencies</div><div class="bar-track"><div class="bar-fill" style="width:60%;background:var(--bts-emerald)"><span class="bar-pct">60%</span></div></div></div>
-            <div class="bar-row" onclick="connectMapSingle(['ws-build-ai','ws-agents'], 'Using AI in Daily Work maps to two sessions — Build AI Into Your Workflow where you integrate AI into a real process, and Agents 101 where you go even further. 60% of you asked for this.')"><div class="bar-lbl">Using AI in Daily Work</div><div class="bar-track"><div class="bar-fill" style="width:60%;background:var(--bts-magenta)"><span class="bar-pct">60%</span></div></div></div>
+            <div class="bar-row" onclick="connectMapSingle(['ws-build-ai'], 'Using AI in Daily Work maps to two sessions — Build AI Into Your Workflow where you integrate AI into a real process. 60% of you asked for this.')"><div class="bar-lbl">Using AI in Daily Work</div><div class="bar-track"><div class="bar-fill" style="width:60%;background:var(--bts-magenta)"><span class="bar-pct">60%</span></div></div></div>
             <div class="bar-row" onclick="connectMapSingle(['ws-review-ai'], 'AI for Thinking & Problem-Solving is at the heart of Reviewing AI Outputs — because the thinking happens when you evaluate, critique, and elevate what AI generates. 56% of you asked for this.')"><div class="bar-lbl">AI for Thinking & Problem-Solving</div><div class="bar-track"><div class="bar-fill" style="width:56%;background:var(--bts-magenta)"><span class="bar-pct">56%</span></div></div></div>
             <div class="bar-row" onclick="connectMapSingle(['ws-ctw1','ws-ctw2','ws-ctw3'], 'Cross-Team Workflow Lab runs three months in a row — September, October, and November — because you told us you wanted multiple touchpoints, not a one-and-done. 55% of you asked for this.')"><div class="bar-lbl">Cross-Team Workflow Lab</div><div class="bar-track"><div class="bar-fill" style="width:55%;background:var(--bts-emerald)"><span class="bar-pct">55%</span></div></div></div>
             <div class="bar-row" onclick="connectMapSingle(['ws-review-ai'], 'Reviewing AI Outputs is in August — right after you\'ve had hands-on time with the tools. 49% of you asked for this, and it\'s the session that makes everything else trustworthy.')"><div class="bar-lbl">Reviewing AI Outputs</div><div class="bar-track"><div class="bar-fill" style="width:49%;background:var(--bts-magenta)"><span class="bar-pct">49%</span></div></div></div>
-            <div class="bar-row" onclick="connectMapSingle(['ws-leadership'], 'Leadership Style lands in August — giving you frameworks to lead differently right before the more collaborative fall sessions begin. 46% of you asked for this.')"><div class="bar-lbl">Leadership Style</div><div class="bar-track"><div class="bar-fill" style="width:46%;background:var(--bts-purple)"><span class="bar-pct">46%</span></div></div></div>
-            <div class="bar-row" onclick="connectMapSingle(['ws-prioritize','ws-leadership'], 'Managing Urgency became two sessions — Prioritize What Matters in November when EOY pressure peaks, and Leadership Style in August for the frameworks to protect your time. 45% of you asked for this.')"><div class="bar-lbl">Managing Urgency</div><div class="bar-track"><div class="bar-fill" style="width:45%;background:var(--bts-purple)"><span class="bar-pct">45%</span></div></div></div>
+            <div class="bar-row" onclick="connectMapSingle(['ws-leadership'], 'Leadership Style lands in October — giving you frameworks to lead differently right before the more collaborative fall sessions begin. 46% of you asked for this.')"><div class="bar-lbl">Leadership Style</div><div class="bar-track"><div class="bar-fill" style="width:46%;background:var(--bts-purple)"><span class="bar-pct">46%</span></div></div></div>
+            <div class="bar-row" onclick="connectMapSingle(['ws-prioritize','ws-leadership'], 'Managing Urgency became two sessions — Prioritize What Matters in November when EOY pressure peaks, and Leadership Style in October for the frameworks to protect your time. 45% of you asked for this.')"><div class="bar-lbl">Managing Urgency</div><div class="bar-track"><div class="bar-fill" style="width:45%;background:var(--bts-purple)"><span class="bar-pct">45%</span></div></div></div>
           </div>
         </div>
       </div>
@@ -1790,8 +1778,8 @@ const tlData = [
       { type:'lab',   color:'tg',    name:'Navigating Change Lab',            date:'Thu Jul 30',     time:'9–9:30am PT · 12–12:30pm ET',   session:'nav-change' },
       { type:'ws',    color:'ai',    name:'Reviewing AI Outputs',             date:'Thu Aug 6',      time:'11am–12pm PT · 2–3pm ET',       session:'review-ai' },
       { type:'lab',   color:'ai',    name:'Reviewing AI Outputs Lab',         date:'Wed Aug 13',     time:'9–9:30am PT · 12–12:30pm ET',   session:'review-ai' },
-      { type:'ws',    color:'tg',    name:'Leadership Style',                 date:'Tue Aug 18',     time:'11am–12pm PT · 2–3pm ET',       session:'leadership' },
-      { type:'lab',   color:'tg',    name:'Leadership Style Lab',             date:'Thu Aug 20',     time:'9–9:30am PT · 12–12:30pm ET',   session:'leadership' },
+      
+      
       { type:'oh',    color:'oh',    name:'ART Office Hours',                 date:'Thu Aug 27',     time:'11am–12pm PT · 2–3pm ET',       session:'oh-aug' },
     ]
   },
@@ -1802,18 +1790,16 @@ const tlData = [
       { type:'ws',    color:'ai',    name:'Build AI Into Your Workflow',      date:'Thu Sep 3',      time:'11am–12pm PT · 2–3pm ET',       session:'build-ai' },
       { type:'lab',   color:'ai',    name:'Build AI Into Your Workflow Lab',  date:'Fri Sep 11',     time:'9–9:30am PT · 12–12:30pm ET',   session:'build-ai' },
       { type:'ws',    color:'ai-rs', name:'Cross-Team Workflow Lab 1',        date:'Tue Sep 15',     time:'11am–12pm PT · 2–3pm ET',       session:'ctw1' },
-      { type:'lab',   color:'ai-rs', name:'Cross-Team Workflow Lab 1 Continued',   date:'Fri Sep 18',     time:'9–9:30am PT · 12–12:30pm ET',   session:'ctw1' },
       { type:'oh',    color:'oh',    name:'ART Office Hours',                 date:'Thu Sep 24',     time:'11am–12pm PT · 2–3pm ET',       session:'oh-sep' },
-      { type:'ws',    color:'ai',    name:'Agents 101',                       date:'Thu Oct 1',      time:'11am–12pm PT · 2–3pm ET',       session:'agents' },
-      { type:'lab',   color:'ai',    name:'Agents 101 Lab',                   date:'Fri Oct 16',     time:'9–9:30am PT · 12–12:30pm ET',   session:'agents' },
+      { type:'ws',    color:'tg',    name:'Leadership Style',                 date:'Thu Oct 1',      time:'11am–12pm PT · 2–3pm ET',       session:'leadership' },
+      { type:'lab',   color:'tg',    name:'Leadership Style Lab',             date:'Fri Oct 16',     time:'9–9:30am PT · 12–12:30pm ET',   session:'leadership' },
       { type:'ws',    color:'ai-rs', name:'Cross-Team Workflow Lab 2',        date:'Tue Oct 20',     time:'11am–12pm PT · 2–3pm ET',       session:'ctw2' },
-      { type:'lab',   color:'ai-rs', name:'Cross-Team Workflow Lab 2 Continued',   date:'Fri Oct 23',     time:'9–9:30am PT · 12–12:30pm ET',   session:'ctw2' },
       { type:'oh',    color:'oh',    name:'ART Office Hours',                 date:'Thu Oct 29',     time:'11am–12pm PT · 2–3pm ET',       session:'oh-oct' },
       { type:'ws',    color:'tg-rs', name:'Prioritize What Matters',          date:'Thu Nov 5',      time:'11am–12pm PT · 2–3pm ET',       session:'prioritize' },
       { type:'lab',   color:'tg-rs', name:'Prioritize What Matters Lab',      date:'Fri Nov 13',     time:'9–9:30am PT · 12–12:30pm ET',   session:'prioritize' },
       { type:'ws',    color:'ai-rs', name:'Cross-Team Workflow Lab 3',        date:'Tue Nov 17',     time:'11am–12pm PT · 2–3pm ET',       session:'ctw3' },
       { type:'oh',    color:'oh',    name:'ART Office Hours',                 date:'Wed Nov 18',     time:'11am–12pm PT · 2–3pm ET',       session:'oh-nov' },
-      { type:'lab',   color:'ai-rs', name:'Cross-Team Workflow Lab 3 Continued',   date:'Tue Nov 18',     time:'11–11:30am PT · 2–2:30pm ET',   session:'ctw3' },
+      
       { type:'cap',   color:'cap',   name:'ART Celebration Showcase',         date:'Wed Dec 2',      time:'11am–12:30pm PT · 2–3:30pm ET', session:'capstone' },
     ]
   }
@@ -2135,9 +2121,9 @@ const calMonths = [
       ]},
       { label: 'Aug 17–21', days: [
         { d: 17 },
-        { d: 18, events: [{ name: 'Leadership Style', time: '11am–12pm PT · 2–3pm ET', color: 'ce-tg', session: 'leadership' }] },
+        { d: 18 },
         { d: 19 },
-        { d: 20, events: [{ name: 'Lab · Leadership Style', time: '9–9:30am PT · 12–12:30pm ET', color: 'ce-lab-tg', session: 'leadership' }] },
+        { d: 20 },
         { d: 21 },
       ]},
       { label: 'Aug 24–28', days: [
@@ -2165,7 +2151,7 @@ const calMonths = [
         { d: 14 },
         { d: 15, events: [{ name: 'Cross-Team Workflow Lab 1', time: '11am–12pm PT · 2–3pm ET', color: 'ce-ai-rs', session: 'ctw1' }] },
         { d: 16 }, { d: 17 },
-        { d: 18, events: [{ name: 'Lab · Cross-Team Workflow Lab 1 Continued', time: '9–9:30am PT · 12–12:30pm ET', color: 'ce-lab-ai-rs', session: 'ctw1' }] },
+        { d: 18 },
       ]},
       { label: 'Sep 21–25', days: [
         { d: 21 }, { d: 22 }, { d: 23 },
@@ -2184,7 +2170,7 @@ const calMonths = [
     weeks: [
       { label: 'Oct 1–2',   days: [
         { empty: true }, { empty: true }, { empty: true },
-        { d: 1, events: [{ name: 'Agents 101', time: '11am–12pm PT · 2–3pm ET', color: 'ce-ai', session: 'agents' }] },
+        { d: 1, events: [{ name: 'Leadership Style', time: '11am–12pm PT · 2–3pm ET', color: 'ce-tg', session: 'leadership' }] },
         { d: 2 },
       ]},
       { label: 'Oct 5–9',   days: [
@@ -2194,13 +2180,13 @@ const calMonths = [
       { label: 'Oct 12–16', days: [
         { d: 12, hol: 'Thanksgiving Mon. (Canada)' },
         { d: 13 }, { d: 14 }, { d: 15 },
-        { d: 16, events: [{ name: 'Lab · Agents 101', time: '9–9:30am PT · 12–12:30pm ET', color: 'ce-lab-ai', session: 'agents' }] },
+        { d: 16, events: [{ name: 'Lab · Leadership Style', time: '9–9:30am PT · 12–12:30pm ET', color: 'ce-lab-tg', session: 'leadership' }] },
       ]},
       { label: 'Oct 19–23', days: [
         { d: 19 },
         { d: 20, events: [{ name: 'Cross-Team Workflow Lab 2', time: '11am–12pm PT · 2–3pm ET', color: 'ce-ai-rs', session: 'ctw2' }] },
         { d: 21 }, { d: 22 },
-        { d: 23, events: [{ name: 'Lab · Cross-Team Workflow Lab 2 Continued', time: '9–9:30am PT · 12–12:30pm ET', color: 'ce-lab-ai-rs', session: 'ctw2' }] },
+        { d: 23 },
       ]},
       { label: 'Oct 26–30', days: [
         { d: 26 }, { d: 27 }, { d: 28 },
@@ -2226,7 +2212,7 @@ const calMonths = [
       { label: 'Nov 16–20', days: [
         { d: 16 },
         { d: 17, events: [{ name: 'Cross-Team Workflow Lab 3', time: '11am–12pm PT · 2–3pm ET', color: 'ce-ai-rs', session: 'ctw3' }] },
-        { d: 18, events: [{ name: 'Lab · Cross-Team Workflow Lab 3 Continued', time: '11–11:30am PT · 2–2:30pm ET', color: 'ce-lab-ai-rs', session: 'ctw3' }] },
+        { d: 18 },
         { d: 19 },
         { d: 20, events: [{ name: 'ART Office Hours', time: '9–9:30am PT · 12–12:30pm ET', color: 'ce-oh', session: 'office-hours' }] },
       ]},
@@ -2405,7 +2391,7 @@ const sessions_data = {
     chips:['49% showed interest in Reviewing AI Outputs','56% showed interest in AI for Thinking & Problem-Solving'],
   },
   leadership: {
-    num:'#7 · Talent Growth', title:'Leadership Style', meta:'Late August · 60 min (followed by a 30 min lab session)',
+    num:'#10 · Talent Growth', title:'Leadership Style', meta:'October · 60 min (followed by a 30 min lab session)',
     track:'Talent Growth', color:'#4c3480',
     purpose:'This session helps you understand how you lead right now and where you want to grow — especially when you\'re leading without a title or a clear mandate.',
     objective:'You\'ll have an actionable plan to grow your leadership right away starting today.',
@@ -2425,7 +2411,7 @@ const sessions_data = {
     chips:['67% showed interest in this session — the #1 request overall','4 of you specifically asked for agent-building'],
   },
   ctw1: {
-    num:'#9 · Run Simple + AI', title:'Cross-Team Workflow Lab 1', meta:'September · 60 min (followed by a 30 min lab session) · Role-mixed',
+    num:'#9 · Run Simple + AI', title:'Cross-Team Workflow Lab 1', meta:'September · 60 min · Role-mixed',
     track:'Run Simple + AI', color:'linear-gradient(135deg,#1d7279,#ca1c68)',
     purpose:'You\'ll work with your chosen cross-functional team to map a shared process, find friction, and simplify the workflow.',
     objective:'You\'ll leave with a simplified workflow and a strengthened working relationship across functions.',
@@ -2435,7 +2421,7 @@ const sessions_data = {
     chips:['55% showed interest in Cross-Team Workflow Labs','14 of you named cross-team friction as a real pain point','3 sessions built from your preference for multiple touchpoints'],
   },
   ctw2: {
-    num:'#11 · Run Simple + AI', title:'Cross-Team Workflow Lab 2', meta:'October · 60 min (followed by a 30 min lab session) · Role-mixed',
+    num:'#11 · Run Simple + AI', title:'Cross-Team Workflow Lab 2', meta:'October · 60 min · Role-mixed',
     track:'Run Simple + AI', color:'linear-gradient(135deg,#1d7279,#ca1c68)',
     purpose:'You\'ll work with your chosen cross-functional team to map a shared process, find friction, and simplify the workflow.',
     objective:'You\'ll leave with a simplified workflow and a strengthened working relationship across functions.',
@@ -2445,7 +2431,7 @@ const sessions_data = {
     chips:['3 sessions built from your preference for multiple touchpoints','55% showed interest in Cross-Team Workflow Labs'],
   },
   ctw3: {
-    num:'#13 · Run Simple + AI', title:'Cross-Team Workflow Lab 3', meta:'November · 60 min (followed by a 30 min lab session) · Role-mixed',
+    num:'#13 · Run Simple + AI', title:'Cross-Team Workflow Lab 3', meta:'November · 60 min · Role-mixed',
     track:'Run Simple + AI', color:'linear-gradient(135deg,#1d7279,#ca1c68)',
     purpose:'You\'ll work with your chosen cross-functional team to map a shared process, find friction, and simplify the workflow.',
     objective:'You\'ll leave with a simplified workflow and a strengthened working relationship across functions.',
@@ -2455,14 +2441,14 @@ const sessions_data = {
     chips:['3 sessions for sustained impact across the year','Timed in November to build momentum toward the December showcase'],
   },
   agents: {
-    num:'#10 · AI Leadership', title:'Agents 101', meta:'October · 60 min (followed by a 30 min lab session)',
+    num:'#10 · AI Leadership', title:'Agents 101', meta:'Coming Q1 2027',
     track:'AI Leadership', color:'#ca1c68',
     purpose:'You\'ll learn what an AI agent actually is, how it works, and take your first steps toward building one.',
     objective:'You\'ll have the knowledge and confidence to start working with and building an agent.',
     surveyTitle:'Built from 4 explicit requests',
     surveyText:'When we asked what skills you most want to build, 4 of you explicitly named agent-building. When we asked what slows you down, you directly flagged "limited by not having access to tools, MCP connectors, or API blocks." 67% selected Build AI Into Your Workflow (the prerequisite) — confirming a large group of survey respondents will be ready for this next step by October.',
     quotes:['"Building autonomous AI agents."','"How to build an AI bot. How to connect AI to my apps."','"When we\'re limited by not having access to tools, MCP connectors, or API blocks."'],
-    chips:['4 of you explicitly asked for agent-building in your own words','Positioned after Build AI Into Your Workflow so you have the foundation first'],
+    chips:['4 of you explicitly asked for agent-building in your own words','Positioned after Reviewing AI Outputs so you have the foundation first'],
   },
   prioritize: {
     num:'#12 · Talent Growth + Run Simple', title:'Prioritize What Matters', meta:'November · 60 min (followed by a 30 min lab session)',
@@ -2543,15 +2529,15 @@ populateQuotes();
 // ── CONNECT SURVEY TO MAP ──
 const connections = {
   q1: ['ws-ai-essentials','ws-build-ai','ws-review-ai','ws-ai-conv','ws-map-workflow','ws-ctw1','ws-leadership','ws-prioritize'],
-  q3: ['ws-ai-conv','ws-ai-essentials','ws-build-ai','ws-agents','ws-map-workflow','ws-leadership','ws-nav-change','ws-prioritize'],
-  q4: ['ws-ai-conv','ws-ai-essentials','ws-map-workflow','ws-nav-change','ws-review-ai','ws-leadership','ws-build-ai','ws-ctw1','ws-ctw2','ws-ctw3','ws-agents','ws-prioritize','ws-capstone'],
-  'q2-ai':         ['ws-ai-conv','ws-ai-essentials','ws-review-ai','ws-build-ai','ws-agents'],
+  q3: ['ws-ai-conv','ws-ai-essentials','ws-build-ai','ws-map-workflow','ws-leadership','ws-nav-change','ws-prioritize'],
+  q4: ['ws-ai-conv','ws-ai-essentials','ws-map-workflow','ws-nav-change','ws-review-ai','ws-leadership','ws-build-ai','ws-ctw1','ws-ctw2','ws-ctw3','ws-prioritize','ws-capstone'],
+  'q2-ai':         ['ws-ai-conv','ws-ai-essentials','ws-review-ai','ws-build-ai'],
   'q2-efficiency': ['ws-map-workflow','ws-ctw1','ws-ctw2','ws-ctw3','ws-build-ai'],
   'q2-leadership': ['ws-leadership','ws-nav-change','ws-prioritize','ws-ai-conv'],
   'q2-comms':      ['ws-leadership','ws-nav-change','ws-ctw1','ws-ctw2','ws-ctw3'],
   'q2-change':     ['ws-nav-change','ws-ai-conv','ws-leadership'],
   'q2-time':       ['ws-prioritize','ws-map-workflow','ws-ai-essentials'],
-  q5:              ['ws-ai-conv','ws-ai-essentials','ws-map-workflow','ws-nav-change','ws-review-ai','ws-leadership','ws-build-ai','ws-ctw1','ws-ctw2','ws-ctw3','ws-agents','ws-prioritize','ws-capstone'],
+  q5:              ['ws-ai-conv','ws-ai-essentials','ws-map-workflow','ws-nav-change','ws-review-ai','ws-leadership','ws-build-ai','ws-ctw1','ws-ctw2','ws-ctw3','ws-prioritize','ws-capstone'],
 };
 
 const noticeMessages = {
@@ -2637,25 +2623,25 @@ const buckets = {
   defender: {
     b1: ['ai-conv','review-ai','nav-change'],
     b2: ['ai-essentials','leadership','build-ai'],
-    b3: ['map-workflow','agents','ctw','prioritize','capstone'],
+    b3: ['map-workflow','ctw','prioritize','capstone'],
   },
   skeptic: {
     b1: ['review-ai','ai-conv','map-workflow'],
     b2: ['ai-essentials','build-ai','nav-change'],
-    b3: ['leadership','agents','ctw','prioritize','capstone'],
+    b3: ['leadership','ctw','prioritize','capstone'],
   },
   purist: {
     b1: ['review-ai','build-ai','leadership'],
     b2: ['ai-conv','ai-essentials','map-workflow','nav-change'],
-    b3: ['ctw','agents','prioritize','capstone'],
+    b3: ['ctw','prioritize','capstone'],
   },
   overwhelmed: {
     b1: ['ai-essentials','map-workflow','prioritize'],
     b2: ['ai-conv','nav-change','review-ai','leadership'],
-    b3: ['build-ai','agents','ctw','capstone'],
+    b3: ['build-ai','ctw','capstone'],
   },
   accelerator: {
-    b1: ['build-ai','agents','ctw'],
+    b1: ['build-ai','ctw'],
     b2: ['review-ai','leadership','map-workflow'],
     b3: ['ai-conv','ai-essentials','nav-change','prioritize','capstone'],
   },
@@ -2668,16 +2654,16 @@ const flipCards = {
   'map-workflow':{ num:'#4', name:'Map & Simplify a Workflow', color:'fc-rs', ids:['ws-map-workflow'] },
   'nav-change':  { num:'#5', name:'Navigating Change', color:'fc-tg', ids:['ws-nav-change'] },
   'review-ai':   { num:'#6', name:'Reviewing AI Outputs', color:'fc-ai', ids:['ws-review-ai'] },
-  'leadership':  { num:'#7', name:'Leadership Style', color:'fc-tg', ids:['ws-leadership'] },
+  'leadership':  { num:'#10', name:'Leadership Style', color:'fc-tg', ids:['ws-leadership'] },
   'build-ai':    { num:'#8', name:'Build AI Into Your Workflow', color:'fc-ai', ids:['ws-build-ai'] },
   'ctw':         { num:'#9–13', name:'Cross-Team Workflow Labs 1, 2 & 3', color:'fc-ai-rs', ids:['ws-ctw1','ws-ctw2','ws-ctw3'] },
-  'agents':      { num:'#10', name:'Agents 101', color:'fc-ai', ids:['ws-agents'] },
+  'agents': { num:'#10', name:'Agents 101', color:'fc-ai', ids:[] },
   'prioritize':  { num:'#12', name:'Prioritize What Matters', color:'fc-tg-rs', ids:['ws-prioritize'] },
   'capstone':    { num:'Capstone', name:'ART Celebration Showcase', color:'fc-cap', ids:['ws-capstone'] },
 };
 
 // Chronological order reference
-const chronoOrder = ['ai-conv','ai-essentials','map-workflow','nav-change','review-ai','leadership','build-ai','ctw','agents','prioritize','capstone'];
+const chronoOrder = ['ai-conv','ai-essentials','map-workflow','nav-change','review-ai','build-ai','leadership','ctw','prioritize','capstone'];
 
 function sortChronological(sids) {
   return [...sids].sort((a, b) => chronoOrder.indexOf(a) - chronoOrder.indexOf(b));
@@ -2823,8 +2809,6 @@ const personas = {
        why:'This is where you get to decide which steps AI handles and which stay human. An Identity Defender who designs their own AI integration builds something grounded in their own values — it meets your standard because you set it.'},
       {id:'ws-ctw1', l:'Cross-Team Workflow Lab', t:'rs',
        why:'When you work alongside people from other functions, your depth and institutional knowledge become visible in a new way. This lab gives you the chance to contribute what only you can contribute — and have others see it clearly.'},
-      {id:'ws-agents', l:'Agents 101', t:'ai',
-       why:'This session isn\'t asking you to build an agent. It\'s asking you to understand what one is — so you\'re the person in the room who knows what\'s actually happening, where the judgment lives, and what the limits are.'},
       {id:'ws-prioritize', l:'Prioritize What Matters', t:'tg',
        why:'When you\'re protecting meaningful work, you also need to protect the time and energy to do it. This session helps you cut through the noise and defend what actually deserves your expertise.'},
       {id:'ws-capstone', l:'ART Celebration Showcase', t:'co',
@@ -2877,8 +2861,6 @@ const personas = {
        why:'Your standards don\'t just protect your own work — they set the bar. This session gives you the framework to make that influence explicit: how to operate at the next level, how to influence without authority, how to bring your craft discipline into how you lead.'},
       {id:'ws-ctw1', l:'Cross-Team Workflow Lab', t:'rs',
        why:'In a mixed-function room, quality standards often erode under pressure to move fast. Your presence raises the floor. When you ask "is this actually good?" out loud, other people feel permission to ask the same. That\'s not resistance — that\'s the team getting better.'},
-      {id:'ws-agents', l:'Agents 101', t:'ai',
-       why:'Building and managing an agent is a skill — and like any skill, it rewards the people who take it seriously. Think of AI as an eager, capable new hire that needs expert direction and real oversight. If you understand how it works and where its limits are, you become the strongest person in the room to manage it well.'},
       {id:'ws-prioritize', l:'Prioritize What Matters', t:'tg',
        why:'Protecting time for deep, quality work requires active prioritization. This session helps you build the structure to defend the kind of work you care about most.'},
       {id:'ws-capstone', l:'ART Celebration Showcase', t:'co',
@@ -2933,8 +2915,6 @@ const personas = {
        why:'Moving fast is a strength — until it isn\'t. This session helps you understand how you lead, where you create momentum, and where you might be inadvertently leaving people behind. That self-awareness is what separates an Accelerator from a disruptor.'},
       {id:'ws-ctw1', l:'Cross-Team Workflow Lab', t:'rs',
        why:'Your biggest leverage in this session is not what you build — it\'s who you bring with you. The Accelerator\'s role in a cross-team lab is to make the possible feel accessible for people earlier in the journey. You don\'t lead from the front here. You lead from alongside.'},
-      {id:'ws-agents', l:'Agents 101', t:'ai',
-       why:'You don\'t have time to experiment your way into understanding AI agents — and you shouldn\'t have to. This session gives you exactly enough to know what agents can take off your plate, so you can make a clear-eyed decision about whether it\'s worth your time. One hour. Real answers.'},
       {id:'ws-prioritize', l:'Prioritize What Matters', t:'tg',
        why:'Even Accelerators burn out. This session helps you protect the energy that fuels your momentum — so the pace you set is one you can actually sustain.'},
       {id:'ws-capstone', l:'ART Celebration Showcase', t:'co',
